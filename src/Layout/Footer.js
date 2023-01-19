@@ -49,12 +49,13 @@ const LinkIcon = styled(Box)`
   margin: 0px 15px;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: #5C6081;
+  opacity: 0.64;
   font-size: 1.5rem;
   cursor: pointer;
   transition: .3s;
   &:hover{
-    color: gray;
+    color: white;
   }
 `;
 

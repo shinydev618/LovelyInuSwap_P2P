@@ -1,0 +1,133 @@
+.news-line {
+  flex: 1 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 215px; */
+}
+
+.news-main-elem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  height: 40px;
+  margin-left: -34px;
+  z-index: 1;
+}
+
+.news-main-elem > section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #22263d;
+  padding-left: 5px;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  margin-left: -2px;
+}
+
+.token-half-bg {
+  background-image: url("../../Assets/Image/Background/NewsBack.png");
+  background-position: left center;
+  background-size: auto 100%;
+  width: 32px;
+  height: 100%;
+}
+
+.news-main-elem > section > span {
+  font-family: "Livvic", Inter, Arial, sans-serif;
+  font-weight: 900;
+  size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.8px;
+  padding: 8px 0;
+  color: rgba(214, 221, 238, 0.88);
+}
+
+.news-main-elem > section > img {
+  width: 32px;
+  height: 32px;
+  padding: 4px 4px 4px 8px;
+}
+
+.news-elements-container {
+  width: 270px;
+}
+
+.news-elem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.news-elem > img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  object-fit: scale-down;
+}
+
+.news-elem > span {
+  font-family: "Livvic", Inter, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(92, 96, 129, 0.88);
+}
+
+.news-elem > .token-position {
+  color: #fdb434;
+  padding-right: 3px;
+}
+
+.news-state-load-true {
+  opacity: 0;
+  transition-duration: 1s;
+  transition-property: opacity;
+}
+
+.news-state-load-false {
+  opacity: 1;
+  transition-duration: 1s;
+  transition-property: opacity;
+}
+
+@media screen and (max-width: 1330px) {
+  .news-line {
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .r-header-container {
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .news-elements-container {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .news-elements-container {
+    width: 240px;
+  }
+}
+
+@media screen and (max-width: 361px) {
+  .news-elements-container {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .news-elements-container {
+    width: 170px;
+  }
+}
