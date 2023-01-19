@@ -5,6 +5,7 @@ import Footer from "./Layout/Footer";
 import Sidebar from "./Layout/Sidebar";
 // import BackMarquee from "./Component/BackMarquee/BackMarquee";
 import BackMarquee from "./Component/BackMarquee/BgLayerComponent";
+import Buy from "./Page/Buy";
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
       <Header />
       <SectionCenter>
         <Sidebar />
-        <SectionContent></SectionContent>
+        <SectionContent>
+          <Buy />
+        </SectionContent>
         <BackMarquee />
       </SectionCenter>
       <Footer />
@@ -50,6 +53,7 @@ const SectionCenter = styled(Box)`
 
 const SectionContent = styled(Box)`
   display: flex;
+  flex: 1;
   width: 100%;
   z-index: 4;
 `;

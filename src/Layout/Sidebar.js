@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { BiLineChart } from "react-icons/bi";
 import { FiPieChart, FiFlag, FiStar } from "react-icons/fi";
 import { RiExchangeDollarFill } from "react-icons/ri";
+import { BsPeople } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -37,13 +38,19 @@ const Sidebar = () => {
         </IconLink>
         <TextLink>LAUNCHPAD</TextLink>
       </LinkEach>
+      <LinkEach>
+        <IconLink>
+          <BsPeople />
+        </IconLink>
+        <TextLink>P2P</TextLink>
+      </LinkEach>
     </StyledComponent>
   );
 };
 
 const StyledComponent = styled(Box)`
   display: flex;
-  width: 360px;
+  width: 300px;
   flex-direction: column;
   margin-left: 50px;
   margin-top: 150px;
