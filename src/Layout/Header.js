@@ -84,6 +84,7 @@ const StyledComponent = styled(Box)`
 const SectionLogo = styled(Box)`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const SectionToken = styled(Box)`

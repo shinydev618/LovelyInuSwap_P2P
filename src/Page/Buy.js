@@ -88,13 +88,12 @@ const Buy = () => {
           {dataTableBuySell.map((each, index) => {
             return (
               <tr>
-                <td>Peter</td>
+                <td>{each.advertiserName}</td>
                 <td>Griffin</td>
                 <td>$100</td>
               </tr>
             );
           })}
-    
         </table>
       </TableBuy>
     </StyledComponent>
@@ -165,6 +164,12 @@ const ButtonRefresh = styled(Box)`
   box-sizing: border-box;
   justify-content: space-between;
   cursor: pointer;
+  &:hover {
+    > div:nth-child(1) {
+      transition: 0.5s;
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 const IconRefresh = styled(Box)`
