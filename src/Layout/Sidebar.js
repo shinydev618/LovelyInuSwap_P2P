@@ -50,7 +50,7 @@ const Sidebar = () => {
 
 const StyledComponent = styled(Box)`
   display: flex;
-  width: 300px;
+  width: 320px;
   flex-direction: column;
   margin-left: 50px;
   margin-top: 150px;

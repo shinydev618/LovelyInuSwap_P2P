@@ -8,6 +8,7 @@ import iconBSC from "../Assets/Image/Icon/Chain/bsc.png";
 import iconEther from "../Assets/Image/Icon/Chain/ethereum.png";
 import iconPolygon from "../Assets/Image/Icon/Chain/polygon.png";
 import iconShibaInu from "../Assets/Image/Icon/Chain/shibaInu.png";
+import { dataTableBuySell } from "../Data/TableBuySell";
 
 const Buy = () => {
   return (
@@ -75,6 +76,27 @@ const Buy = () => {
           </IconChain>
         </GroupIconChain>
       </SectionTab>
+      <TableBuy>
+        <table>
+          <tr>
+            <th>Advertisers</th>
+            <th>Price</th>
+            <th>Limit / Available</th>
+            <th>Payment</th>
+            <th>Trade</th>
+          </tr>
+          {dataTableBuySell.map((each, index) => {
+            return (
+              <tr>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td>$100</td>
+              </tr>
+            );
+          })}
+    
+        </table>
+      </TableBuy>
     </StyledComponent>
   );
 };
@@ -282,6 +304,32 @@ const BottomTabSell = styled(Box)`
   height: 2px;
   background: #ed628b;
   border-radius: 32px;
+`;
+
+const TableBuy = styled(Box)`
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  > table {
+    width: 100%;
+    border: none;
+  }
+  > table > tr > th {
+    text-align: left;
+    font-family: "Livvic";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 200%;
+    /* identical to box height, or 24px */
+
+    letter-spacing: 0.02em;
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #5c6081;
+
+    opacity: 0.48;
+  }
 `;
 
 export default Buy;
