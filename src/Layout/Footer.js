@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { Box } from "@mui/material";
 import {
-  FaTelegram,
+  FaTelegramPlane,
   FaYoutube,
+  FaTwitter,
   FaInstagram,
   FaGithub,
   FaScroll,
@@ -13,10 +14,13 @@ const Footer = () => {
     <StyledComponent>
       <SectionLinks>
         <LinkIcon>
-          <FaTelegram />
+          <FaTelegramPlane />
         </LinkIcon>
         <LinkIcon>
           <FaYoutube />
+        </LinkIcon>
+        <LinkIcon>
+          <FaTwitter />
         </LinkIcon>
         <LinkIcon>
           <FaInstagram />
@@ -37,6 +41,8 @@ const StyledComponent = styled(Box)`
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
+  margin-top: 100px;
 `;
 
 const SectionLinks = styled(Box)`
@@ -46,15 +52,15 @@ const SectionLinks = styled(Box)`
 
 const LinkIcon = styled(Box)`
   display: flex;
-  margin: 0px 15px;
+  margin: 0px 20px;
   justify-content: center;
   align-items: center;
-  color: #5C6081;
+  color: #5c6081;
   opacity: 0.64;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: .3s;
-  &:hover{
+  transition: 0.3s;
+  &:hover {
     color: white;
   }
 `;
