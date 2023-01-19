@@ -78,6 +78,7 @@ const StyledComponent = styled(Box)`
   padding: 0px 40px;
   box-sizing: border-box;
   margin-top: 36px;
+  z-index: 2;
 `;
 
 const SectionLogo = styled(Box)`

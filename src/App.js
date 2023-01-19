@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import Header from "./Layout/Header";
 import Footer from "./Layout/Footer";
 import Sidebar from "./Layout/Sidebar";
+// import BackMarquee from "./Component/BackMarquee/BackMarquee";
+import BackMarquee from "./Component/BackMarquee/BgLayerComponent";
 
 const App = () => {
   return (
@@ -11,6 +13,7 @@ const App = () => {
       <SectionCenter>
         <Sidebar />
         <SectionContent></SectionContent>
+        <BackMarquee />
       </SectionCenter>
       <Footer />
     </StyledComponent>
@@ -22,7 +25,7 @@ const StyledComponent = styled(Box)`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #181B2E;
+  background-color: #181b2e;
   overflow-y: auto;
   ::-webkit-scrollbar {
     width: 15px;
@@ -35,7 +38,7 @@ const StyledComponent = styled(Box)`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #181B2E;
+    background-color: #181b2e;
     border-radius: 100px;
   }
 `;
@@ -48,6 +51,7 @@ const SectionCenter = styled(Box)`
 const SectionContent = styled(Box)`
   display: flex;
   width: 100%;
+  z-index: 4;
 `;
 
 export default App;

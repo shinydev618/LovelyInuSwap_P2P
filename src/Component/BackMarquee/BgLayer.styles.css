@@ -1,0 +1,26 @@
+.bg-back-component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    background-color: rgba(24, 27, 46, 1);
+    height: 100%;
+}
+
+.bg-back-component > .bg-text-span {
+    font-family: "Livvic", Inter, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 320px;
+    line-height: 380px;
+    color: #181B2E;
+    text-shadow: -2px 2px 0 rgba(41, 46, 77, .4), 2px 2px 0 rgba(41, 46, 77, .4), 2px -2px 0 rgba(41, 46, 77, .4), -2px -2px 0 rgba(41, 46, 77, .4);
+    overflow: hidden;
+}
+
+section.bg-text {
+    padding-right: 80px;
+    overflow: hidden;
+}

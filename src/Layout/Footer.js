@@ -43,6 +43,7 @@ const StyledComponent = styled(Box)`
   align-items: center;
   margin-bottom: 40px;
   margin-top: 100px;
+  z-index: 5;
 `;
 
 const SectionLinks = styled(Box)`
