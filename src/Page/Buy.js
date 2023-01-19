@@ -88,9 +88,89 @@ const Buy = () => {
           {dataTableBuySell.map((each, index) => {
             return (
               <tr>
-                <td>{each.advertiserName}</td>
-                <td>Griffin</td>
-                <td>$100</td>
+                <td>
+                  <SectionCell>
+                    <SectionCellUp>
+                      <IconAdvertiser>
+                        <img src={each.advertiserIcon} width={"100%"} alt="" />
+                      </IconAdvertiser>
+                      <TextAdvertiserName>
+                        {each.advertiserName}
+                      </TextAdvertiserName>
+                    </SectionCellUp>
+                    <SectionCellDown>
+                      <TextAdevertiserOrderCompletion>
+                        {each.advertiserOrder}
+                        <span style={{ color: "#63688f", fontSize: "10px" }}>
+                          {"\u00a0"}orders{"\u00a0"}
+                        </span>
+                        {each.advertiserCompletion}
+                        <span style={{ color: "#63688f", fontSize: "10px" }}>
+                          {"\u00a0"}completion
+                        </span>
+                      </TextAdevertiserOrderCompletion>
+                    </SectionCellDown>
+                  </SectionCell>
+                </td>
+                <td>
+                  <SectionCell>
+                    <SectionCellUp>
+                      <TextPriceValue>{each.priceValue}</TextPriceValue>
+                    </SectionCellUp>
+                    <SectionCellDown>
+                      <TextPriceType>{each.priceType}</TextPriceType>
+                    </SectionCellDown>
+                  </SectionCell>
+                </td>
+                <td>
+                  <SectionCell>
+                    <SectionCellUp>
+                      <TextAvailable>
+                        Available :
+                        <span
+                          style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}
+                        >
+                          {"\u00a0"}
+                          {each.available}
+                          {"\u00a0"}
+                        </span>
+                        <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
+                      </TextAvailable>
+                    </SectionCellUp>
+                    <SectionCellDown>
+                      <TextLimit>
+                        Limit :
+                        <span style={{ color: "#D6DDEE" }}>
+                          {each.limitFirst} - {each.limitLast}
+                        </span>
+                      </TextLimit>
+                    </SectionCellDown>
+                  </SectionCell>
+                </td>
+                <td>
+                  <SectionCell>
+                    {each.payment[0] !== "" ? (
+                      <ButtonWise>Wise</ButtonWise>
+                    ) : (
+                      <></>
+                    )}
+                    {each.payment[1] !== "" ? (
+                      <ButtonPumb>PUMB</ButtonPumb>
+                    ) : (
+                      <></>
+                    )}
+                    {each.payment[2] !== "" ? (
+                      <ButtonGeoPay>Geo Pay</ButtonGeoPay>
+                    ) : (
+                      <></>
+                    )}
+                  </SectionCell>
+                </td>
+                <td>
+                  <SectionCell>
+                    <ButtonTradeBuy>BUY</ButtonTradeBuy>
+                  </SectionCell>
+                </td>
               </tr>
             );
           })}
@@ -335,6 +415,199 @@ const TableBuy = styled(Box)`
 
     opacity: 0.48;
   }
+`;
+
+const SectionCell = styled(Box)`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const SectionCellUp = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+const SectionCellDown = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+
+const IconAdvertiser = styled(Box)`
+  display: flex;
+  width: 24px;
+`;
+const TextAdvertiserName = styled(Box)`
+  margin-left: 8px;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 148%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.01em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const TextAdevertiserOrderCompletion = styled(Box)`
+  display: flex;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.03em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #d6ddee;
+`;
+
+const TextPriceValue = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 148%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #d6ddee;
+`;
+
+const TextPriceType = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const TextAvailable = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 148%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.01em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const TextLimit = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const ButtonWise = styled(Box)`
+  display: flex;
+  width: 45px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(105, 92, 255, 0.16);
+  border-radius: 95px;
+
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.02em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #695cff;
+`;
+
+const ButtonPumb = styled(Box)`
+  display: flex;
+  width: 55px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(239, 95, 96, 0.12);
+  border-radius: 95px;
+
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.02em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #ef5f60;
+`;
+
+const ButtonGeoPay = styled(Box)`
+  display: flex;
+  width: 45px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(58, 215, 205, 0.08);
+  border-radius: 95px;
+
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.02em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #3ad7cd;
+`;
+const ButtonTradeBuy = styled(Box)`
+  display: flex;
+  width: 60px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background: #5f84f5;
+  border-radius: 12px;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.08em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #f2f5ff;
 `;
 
 export default Buy;

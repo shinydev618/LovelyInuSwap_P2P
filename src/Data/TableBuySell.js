@@ -6,7 +6,7 @@ import iconAvatar05 from "../Assets/Image/Icon/Avatar/avatar05.png";
 
 export const dataTableBuySell = [
   {
-    advertiserImage: iconAvatar01,
+    advertiserIcon: iconAvatar01,
     advertiserName: "Saidovm57",
     advertiserOrder: 191,
     advertiserCompletion: 99.5,
@@ -27,7 +27,7 @@ export const dataTableBuySell = [
     available: 152.22,
     limitFirst: "1,000.00",
     limitLast: "5,673.22",
-    payment: ["Wise", "PUMB", "Geo Pay"],
+    payment: ["Wise", "PUMB", ""],
   },
   {
     advertiserImage: iconAvatar03,
@@ -39,7 +39,7 @@ export const dataTableBuySell = [
     available: 152.22,
     limitFirst: "1,000.00",
     limitLast: "5,673.22",
-    payment: ["Wise", "PUMB", "Geo Pay"],
+    payment: ["Wise", "", "Geo Pay"],
   },
   {
     advertiserImage: iconAvatar04,
@@ -51,7 +51,7 @@ export const dataTableBuySell = [
     available: 152.22,
     limitFirst: "1,000.00",
     limitLast: "5,673.22",
-    payment: ["Wise", "PUMB", "Geo Pay"],
+    payment: ["Wise", "", ""],
   },
   {
     advertiserImage: iconAvatar05,
@@ -63,6 +63,6 @@ export const dataTableBuySell = [
     available: 152.22,
     limitFirst: "1,000.00",
     limitLast: "5,673.22",
-    payment: ["Wise", "PUMB", "Geo Pay"],
+    payment: ["", "", "Geo Pay"],
   },
 ];
