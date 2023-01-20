@@ -2,23 +2,18 @@ import styled from "styled-components";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { TbRefresh } from "react-icons/tb";
-import iconTether from "../Assets/Image/Icon/Chain/tether.png";
-import iconBitcoin from "../Assets/Image/Icon/Chain/bitcoin.png";
-import iconDai from "../Assets/Image/Icon/Chain/dai.png";
-import iconBSC from "../Assets/Image/Icon/Chain/bsc.png";
-import iconEther from "../Assets/Image/Icon/Chain/ethereum.png";
-import iconPolygon from "../Assets/Image/Icon/Chain/polygon.png";
-import iconShibaInu from "../Assets/Image/Icon/Chain/shibaInu.png";
 import { dataTableBuySell } from "../Data/TableBuySell";
+import iconTether from "../Assets/Image/Icon/Chain/tether.png";
+import { dataChainList } from "../Data/ChainList";
 
 const Buy = () => {
   const navigate = useNavigate();
   const handleRouterBuy = () => {
-    navigate.push("/buy");
+    navigate("/buy");
   };
 
   const handleRouterSell = () => {
-    navigate.push("/sell");
+    navigate("/sell");
   };
 
   return (
@@ -51,140 +46,121 @@ const Buy = () => {
       </SectionHeadDescription>
       <SectionTab>
         <GroupTabButton>
-          <ButtonTabBuy onClick={() => handleRouterBuy}>
+          <ButtonTabBuy onClick={() => handleRouterBuy()}>
             <SectinoTabBuyUp></SectinoTabBuyUp>
             <BottomTabBuy></BottomTabBuy>
             BUY
           </ButtonTabBuy>
-          <ButtonTabSell onClick={() => handleRouterSell}>
+          <ButtonTabSell onClick={() => handleRouterSell()}>
             <SectinoTabSellUp></SectinoTabSellUp>
             <BottomTabSell></BottomTabSell>
             SELL
           </ButtonTabSell>
         </GroupTabButton>
         <GroupIconChain>
-          <IconChain>
-            <img src={iconTether} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconBitcoin} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconDai} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconBSC} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconEther} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconPolygon} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
-          <IconChain>
-            <img src={iconShibaInu} width={"32px"} height={"32px"} alt="" />
-          </IconChain>
+          {dataChainList.map((each, index) => {
+            return (
+              <IconChain key={index}>
+                <img
+                  src={each.icon}
+                  width={"32px"}
+                  height={"32px"}
+                  alt={each.name}
+                />
+              </IconChain>
+            );
+          })}
         </GroupIconChain>
       </SectionTab>
       <TableBuy>
-        <table>
-          <tr>
-            <th>Advertisers</th>
-            <th>Price</th>
-            <th>Limit / Available</th>
-            <th>Payment</th>
-            <th style={{ textAlign: "right" }}>Trade</th>
-          </tr>
-          {dataTableBuySell.map((each, index) => {
+        <TableHead>
+          <THeadAdvertiser>Advertisers</THeadAdvertiser>
+          <THeadPrice>Price</THeadPrice>
+          <THeadLimit>Limit / Available</THeadLimit>
+          <THeadPayment>Payment</THeadPayment>
+          <THeadTrade>Trade</THeadTrade>
+        </TableHead>
+        <TableBody>
+          {dataTableBuySell?.map((each, index) => {
             return (
-              <tr key={index}>
-                <td>
-                  <SectionCell>
-                    <SectionCellUp>
-                      <IconAdvertiser>
-                        <img src={each.advertiserIcon} width={"100%"} alt="" />
-                      </IconAdvertiser>
-                      <TextAdvertiserName>
-                        {each.advertiserName}
-                      </TextAdvertiserName>
-                    </SectionCellUp>
-                    <SectionCellDown>
-                      <TextAdevertiserOrderCompletion>
-                        {each.advertiserOrder}
-                        <span style={{ color: "#63688f", fontSize: "11px" }}>
-                          {"\u00a0"}orders{"\u00a0"}
-                        </span>
-                        {each.advertiserCompletion}
-                        <span style={{ color: "#63688f", fontSize: "11px" }}>
-                          {"\u00a0"}completion
-                        </span>
-                      </TextAdevertiserOrderCompletion>
-                    </SectionCellDown>
-                  </SectionCell>
-                </td>
-                <td>
-                  <SectionCell>
-                    <SectionCellUp>
-                      <TextPriceValue>{each.priceValue}</TextPriceValue>
-                    </SectionCellUp>
-                    <SectionCellDown>
-                      <TextPriceType>{each.priceType}</TextPriceType>
-                    </SectionCellDown>
-                  </SectionCell>
-                </td>
-                <td>
-                  <SectionCell>
-                    <SectionCellUp>
-                      <TextAvailable>
-                        Available :
-                        <span
-                          style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}
-                        >
-                          {"\u00a0"}
-                          {each.available}
-                          {"\u00a0"}
-                        </span>
-                        <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
-                      </TextAvailable>
-                    </SectionCellUp>
-                    <SectionCellDown>
-                      <TextLimit>
-                        Limit :{"\u00a0"}
-                        <span style={{ color: "#D6DDEE" }}>
-                          {each.limitFirst} - {each.limitLast}
-                        </span>
-                      </TextLimit>
-                    </SectionCellDown>
-                  </SectionCell>
-                </td>
-                <td>
-                  <SectionCellPayment>
-                    {each.payment[0] !== "" ? (
-                      <ButtonWise>Wise</ButtonWise>
-                    ) : (
-                      <></>
-                    )}
-                    {each.payment[1] !== "" ? (
-                      <ButtonPumb>PUMB</ButtonPumb>
-                    ) : (
-                      <></>
-                    )}
-                    {each.payment[2] !== "" ? (
-                      <ButtonGeoPay>Geo Pay</ButtonGeoPay>
-                    ) : (
-                      <></>
-                    )}
-                  </SectionCellPayment>
-                </td>
-                <td>
-                  <SectionCellLast>
-                    <ButtonTradeBuy>BUY</ButtonTradeBuy>
-                  </SectionCellLast>
-                </td>
-              </tr>
+              <TableRow>
+                <TRowAdvertiser>
+                  <SectionCellUp>
+                    <IconAdvertiser>
+                      <img src={each.advertiserIcon} width={"100%"} alt="" />
+                    </IconAdvertiser>
+                    <TextAdvertiserName>
+                      {each.advertiserName}
+                    </TextAdvertiserName>
+                  </SectionCellUp>
+                  <SectionCellDown>
+                    <TextAdevertiserOrderCompletion>
+                      {each.advertiserOrder}
+                      <span style={{ color: "#63688f", fontSize: "11px" }}>
+                        {"\u00a0"}orders{"\u00a0"}
+                      </span>
+                      {each.advertiserCompletion}
+                      <span style={{ color: "#63688f", fontSize: "11px" }}>
+                        {"\u00a0"}completion
+                      </span>
+                    </TextAdevertiserOrderCompletion>
+                  </SectionCellDown>
+                </TRowAdvertiser>
+                <TRowPrice>
+                  <SectionCellUp>
+                    <TextPriceValue>{each.priceValue}</TextPriceValue>
+                  </SectionCellUp>
+                  <SectionCellDown>
+                    <TextPriceType>{each.priceType}</TextPriceType>
+                  </SectionCellDown>
+                </TRowPrice>
+                <TRowLimit>
+                  <SectionCellUp>
+                    <TextAvailable>
+                      Available :
+                      <span
+                        style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}
+                      >
+                        {"\u00a0"}
+                        {each.available}
+                        {"\u00a0"}
+                      </span>
+                      <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
+                    </TextAvailable>
+                  </SectionCellUp>
+                  <SectionCellDown>
+                    <TextLimit>
+                      Limit :{"\u00a0"}
+                      <span style={{ color: "#D6DDEE" }}>
+                        {each.limitFirst} - {each.limitLast}
+                      </span>
+                    </TextLimit>
+                  </SectionCellDown>
+                </TRowLimit>
+                <TRowPayment>
+                  {each.payment[0] !== "" ? (
+                    <ButtonWise>Wise</ButtonWise>
+                  ) : (
+                    <></>
+                  )}
+                  {each.payment[1] !== "" ? (
+                    <ButtonPumb>PUMB</ButtonPumb>
+                  ) : (
+                    <></>
+                  )}
+                  {each.payment[2] !== "" ? (
+                    <ButtonGeoPay>Geo Pay</ButtonGeoPay>
+                  ) : (
+                    <></>
+                  )}
+                </TRowPayment>
+                <TRowTrade>
+                  <ButtonTradeBuy>BUY</ButtonTradeBuy>
+                </TRowTrade>
+              </TableRow>
             );
           })}
-        </table>
+        </TableBody>
       </TableBuy>
     </StyledComponent>
   );
@@ -201,7 +177,7 @@ const StyledComponent = styled(Box)`
     width: 900px;
   }
   @media (max-width: 1400px) {
-    width: 700px;
+    width: 750px;
   }
 `;
 
@@ -412,52 +388,109 @@ const BottomTabSell = styled(Box)`
 const TableBuy = styled(Box)`
   display: flex;
   width: 100%;
+  flex-direction: column;
   margin-top: 40px;
-  > table {
-    width: 100%;
-    border: none;
-  }
-  > table > tr > th {
-    text-align: left;
-    font-family: "Livvic";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 200%;
-    /* identical to box height, or 24px */
-
-    letter-spacing: 0.02em;
-    font-feature-settings: "pnum" on, "lnum" on;
-
-    color: #5c6081;
-
-    opacity: 0.48;
-  }
 `;
 
-const SectionCell = styled(Box)`
+const TableHead = styled(Box)`
   display: flex;
   width: 100%;
+  align-items: center;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.02em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #5c6081;
+
+  opacity: 0.48;
+`;
+
+const THeadAdvertiser = styled(Box)`
+  display: flex;
+  flex: 4;
+  justify-content: flex-start;
+`;
+
+const THeadPrice = styled(Box)`
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+`;
+
+const THeadLimit = styled(Box)`
+  display: flex;
+  flex: 4;
+  justify-content: flex-start;
+`;
+
+const THeadPayment = styled(Box)`
+  display: flex;
+  flex: 3;
+  justify-content: flex-start;
+`;
+
+const THeadTrade = styled(Box)`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+const TableBody = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+const TableRow = styled(Box)`
+  display: flex;
+  width: 100%;
+  align-items: center;
+`;
+
+const TRowAdvertiser = styled(Box)`
+  display: flex;
+  flex: 4;
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 25px;
   margin-top: 25px;
-  /* border-bottom: 1px solid #323859; */
 `;
-
-const SectionCellPayment = styled(Box)`
+const TRowPrice = styled(Box)`
   display: flex;
-  width: 100%;
+  flex: 1;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 25px;
+  margin-top: 25px;
+`;
+const TRowLimit = styled(Box)`
+  display: flex;
+  flex: 4;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 25px;
+  margin-top: 25px;
+`;
+const TRowPayment = styled(Box)`
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+  grid-gap: 5px;
   justify-content: flex-start;
   padding-bottom: 25px;
   margin-top: 25px;
-  /* border-bottom: 1px solid #323859; */
 `;
-
-const SectionCellLast = styled(Box)`
+const TRowTrade = styled(Box)`
   display: flex;
-  width: 100%;
+  flex: 1;
   align-items: flex-end;
   flex-direction: column;
   justify-content: space-between;
@@ -583,7 +616,6 @@ const ButtonWise = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #695cff;
-  margin-right: 5px;
 `;
 
 const ButtonPumb = styled(Box)`
@@ -606,7 +638,6 @@ const ButtonPumb = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #ef5f60;
-  margin-right: 5px;
 `;
 
 const ButtonGeoPay = styled(Box)`
