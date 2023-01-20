@@ -8,7 +8,7 @@ import iconShibaInu from "../Assets/Image/Icon/Chain/shibaInu.png";
 
 export const dataChainList = [
   {
-    name: "Tethereum",
+    name: "Tether",
     symbol: "USDT",
     icon: iconTether,
   },
@@ -23,8 +23,8 @@ export const dataChainList = [
     icon: iconDai,
   },
   {
-    name: "Binnace Smart Chain",
-    symbol: "BSC",
+    name: "BNB",
+    symbol: "BNB",
     icon: iconBSC,
   },
   {
@@ -34,12 +34,12 @@ export const dataChainList = [
   },
   {
     name: "Polygon",
-    symbol: "POL",
+    symbol: "MATIC",
     icon: iconPolygon,
   },
   {
     name: "Shiba Inu",
-    symbol: "SHI",
+    symbol: "SHIB",
     icon: iconShibaInu,
   },
 ];
