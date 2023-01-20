@@ -83,11 +83,11 @@ const Buy = () => {
             <th>Price</th>
             <th>Limit / Available</th>
             <th>Payment</th>
-            <th>Trade</th>
+            <th style={{ textAlign: "right" }}>Trade</th>
           </tr>
           {dataTableBuySell.map((each, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>
                   <SectionCell>
                     <SectionCellUp>
@@ -101,11 +101,11 @@ const Buy = () => {
                     <SectionCellDown>
                       <TextAdevertiserOrderCompletion>
                         {each.advertiserOrder}
-                        <span style={{ color: "#63688f", fontSize: "10px" }}>
+                        <span style={{ color: "#63688f", fontSize: "11px" }}>
                           {"\u00a0"}orders{"\u00a0"}
                         </span>
                         {each.advertiserCompletion}
-                        <span style={{ color: "#63688f", fontSize: "10px" }}>
+                        <span style={{ color: "#63688f", fontSize: "11px" }}>
                           {"\u00a0"}completion
                         </span>
                       </TextAdevertiserOrderCompletion>
@@ -139,7 +139,7 @@ const Buy = () => {
                     </SectionCellUp>
                     <SectionCellDown>
                       <TextLimit>
-                        Limit :
+                        Limit :{"\u00a0"}
                         <span style={{ color: "#D6DDEE" }}>
                           {each.limitFirst} - {each.limitLast}
                         </span>
@@ -148,7 +148,7 @@ const Buy = () => {
                   </SectionCell>
                 </td>
                 <td>
-                  <SectionCell>
+                  <SectionCellPayment>
                     {each.payment[0] !== "" ? (
                       <ButtonWise>Wise</ButtonWise>
                     ) : (
@@ -164,12 +164,12 @@ const Buy = () => {
                     ) : (
                       <></>
                     )}
-                  </SectionCell>
+                  </SectionCellPayment>
                 </td>
                 <td>
-                  <SectionCell>
+                  <SectionCellLast>
                     <ButtonTradeBuy>BUY</ButtonTradeBuy>
-                  </SectionCell>
+                  </SectionCellLast>
                 </td>
               </tr>
             );
@@ -182,7 +182,7 @@ const Buy = () => {
 
 const StyledComponent = styled(Box)`
   display: flex;
-  width: 720px;
+  width: 1200px;
   flex-direction: column;
   margin-top: 55px;
 `;
@@ -420,7 +420,27 @@ const TableBuy = styled(Box)`
 const SectionCell = styled(Box)`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 25px;
+  margin-top: 25px;
+  /* border-bottom: 1px solid #323859; */
+`;
+
+const SectionCellPayment = styled(Box)`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding-bottom: 25px;
+  margin-top: 25px;
+  /* border-bottom: 1px solid #323859; */
+`;
+
+const SectionCellLast = styled(Box)`
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
   flex-direction: column;
   justify-content: space-between;
 `;
@@ -428,6 +448,7 @@ const SectionCell = styled(Box)`
 const SectionCellUp = styled(Box)`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 `;
 const SectionCellDown = styled(Box)`
   display: flex;
@@ -544,6 +565,7 @@ const ButtonWise = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #695cff;
+  margin-right: 5px;
 `;
 
 const ButtonPumb = styled(Box)`
@@ -566,11 +588,12 @@ const ButtonPumb = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #ef5f60;
+  margin-right: 5px;
 `;
 
 const ButtonGeoPay = styled(Box)`
   display: flex;
-  width: 45px;
+  width: 66px;
   height: 25px;
   justify-content: center;
   align-items: center;
@@ -608,6 +631,7 @@ const ButtonTradeBuy = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #f2f5ff;
+  cursor: pointer;
 `;
 
 export default Buy;

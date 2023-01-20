@@ -18,7 +18,7 @@ export const dataTableBuySell = [
     payment: ["Wise", "PUMB", "Geo Pay"],
   },
   {
-    advertiserImage: iconAvatar02,
+    advertiserIcon: iconAvatar02,
     advertiserName: "Miami",
     advertiserOrder: 191,
     advertiserCompletion: 99.5,
@@ -30,7 +30,7 @@ export const dataTableBuySell = [
     payment: ["Wise", "PUMB", ""],
   },
   {
-    advertiserImage: iconAvatar03,
+    advertiserIcon: iconAvatar03,
     advertiserName: "Crypto_Surfer",
     advertiserOrder: 191,
     advertiserCompletion: 99.5,
@@ -42,7 +42,7 @@ export const dataTableBuySell = [
     payment: ["Wise", "", "Geo Pay"],
   },
   {
-    advertiserImage: iconAvatar04,
+    advertiserIcon: iconAvatar04,
     advertiserName: "Vlad12338",
     advertiserOrder: 191,
     advertiserCompletion: 99.5,
@@ -54,7 +54,7 @@ export const dataTableBuySell = [
     payment: ["Wise", "", ""],
   },
   {
-    advertiserImage: iconAvatar05,
+    advertiserIcon: iconAvatar05,
     advertiserName: "justdes1993",
     advertiserOrder: 191,
     advertiserCompletion: 99.5,

@@ -30,20 +30,7 @@ const StyledComponent = styled(Box)`
   height: 100%;
   background-color: #181b2e;
   overflow-y: auto;
-  ::-webkit-scrollbar {
-    width: 15px;
-  }
 
-  ::-webkit-scrollbar-track {
-    background-color: white;
-    border-radius: 100px;
-    cursor: pointer;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #181b2e;
-    border-radius: 100px;
-  }
 `;
 
 const SectionCenter = styled(Box)`
