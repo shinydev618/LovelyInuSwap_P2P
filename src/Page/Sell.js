@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { TbRefresh } from "react-icons/tb";
 import iconTether from "../Assets/Image/Icon/Chain/tether.png";
 import iconBitcoin from "../Assets/Image/Icon/Chain/bitcoin.png";
@@ -11,16 +10,8 @@ import iconPolygon from "../Assets/Image/Icon/Chain/polygon.png";
 import iconShibaInu from "../Assets/Image/Icon/Chain/shibaInu.png";
 import { dataTableBuySell } from "../Data/TableBuySell";
 
-const Buy = () => {
-  const navigate = useNavigate();
-  const handleRouterBuy = () => {
-    navigate.push("/buy");
-  };
-
-  const handleRouterSell = () => {
-    navigate.push("/sell");
-  };
-
+const Sell = () => {
+  
   return (
     <StyledComponent>
       <SectionHead>
@@ -51,12 +42,12 @@ const Buy = () => {
       </SectionHeadDescription>
       <SectionTab>
         <GroupTabButton>
-          <ButtonTabBuy onClick={() => handleRouterBuy}>
+          <ButtonTabBuy>
             <SectinoTabBuyUp></SectinoTabBuyUp>
             <BottomTabBuy></BottomTabBuy>
             BUY
           </ButtonTabBuy>
-          <ButtonTabSell onClick={() => handleRouterSell}>
+          <ButtonTabSell>
             <SectinoTabSellUp></SectinoTabSellUp>
             <BottomTabSell></BottomTabSell>
             SELL
@@ -178,7 +169,7 @@ const Buy = () => {
                 </td>
                 <td>
                   <SectionCellLast>
-                    <ButtonTradeBuy>BUY</ButtonTradeBuy>
+                    <ButtonTradeSell>SELL</ButtonTradeSell>
                   </SectionCellLast>
                 </td>
               </tr>
@@ -630,13 +621,13 @@ const ButtonGeoPay = styled(Box)`
 
   color: #3ad7cd;
 `;
-const ButtonTradeBuy = styled(Box)`
+const ButtonTradeSell = styled(Box)`
   display: flex;
-  width: 60px;
+  width: 63px;
   height: 40px;
   justify-content: center;
   align-items: center;
-  background: #5f84f5;
+  background: #ed628b;
   border-radius: 12px;
   font-family: "Livvic";
   font-style: normal;
@@ -652,4 +643,4 @@ const ButtonTradeBuy = styled(Box)`
   cursor: pointer;
 `;
 
-export default Buy;
+export default Sell;
