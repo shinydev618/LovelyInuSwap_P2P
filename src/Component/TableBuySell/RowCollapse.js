@@ -1,7 +1,7 @@
 import { useState } from "react";
-
 import styled from "styled-components";
 import { Box } from "@mui/material";
+import InputToken from "../Input/InputToken";
 
 const RowCollapse = ({ each }) => {
   const [flagExpandBuy, setFlagExpandBuy] = useState(false);
@@ -37,7 +37,7 @@ const RowCollapse = ({ each }) => {
             <TextPriceValue>{each.priceValue}</TextPriceValue>
           </SectionCellUp>
           <SectionCellDown>
-            <TextPriceType>{each.priceType}</TextPriceType>
+            <TextPriceType01>{each.priceType}</TextPriceType01>
           </SectionCellDown>
         </TRowPrice01>
         <TRowLimit01>
@@ -87,7 +87,8 @@ const RowCollapse = ({ each }) => {
           </TRowAdvertiser02>
           <TRowPrice02>
             <TextPriceValue>{each.priceValue}</TextPriceValue>
-            <TextPriceType>{each.priceType}</TextPriceType>
+            {"\u00a0"}
+            <TextPriceType02>{each.priceType}</TextPriceType02>
           </TRowPrice02>
           <TRowPaymentLimit01>
             Payment Time Limit:{"\u00a0"}
@@ -115,7 +116,14 @@ const RowCollapse = ({ each }) => {
             )}
           </TRowPayment02>
         </SectionExpandLeft>
-        <SectionExpandRight></SectionExpandRight>
+        <SectionExpandRight>
+          <SectionInputPay>
+            <InputToken
+              title={"I want to pay"}
+              placeholder={"2,000.0 - 50,000.0"}
+            />
+          </SectionInputPay>
+        </SectionExpandRight>
       </TableExpandRow>
     );
   }
@@ -126,19 +134,20 @@ const TableRow = styled(Box)`
   width: 100%;
   align-items: center;
   padding: 25px 0px;
-  border-bottom: 1px solid #5c6081;
+  border-bottom: 1px solid rgba(50, 56, 89, 0.8);
 `;
 
 const TableExpandRow = styled(Box)`
   display: flex;
   width: 100%;
   padding: 25px 0px;
-  border-bottom: 1px solid #5c6081;
+  border-bottom: 1px solid rgba(50, 56, 89, 0.8);
 `;
 
 const SectionExpandLeft = styled(Box)`
   display: flex;
   flex: 1;
+  height: 305px;
   flex-direction: column;
   margin-right: 20px;
 `;
@@ -146,6 +155,14 @@ const SectionExpandLeft = styled(Box)`
 const SectionExpandRight = styled(Box)`
   display: flex;
   flex: 1;
+  width: 100%;
+  flex-direction: column;
+  background: #22263d;
+  backdrop-filter: blur(3px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 24px;
+  padding: 25px;
+  box-sizing: border-box;
 `;
 
 const TRowAdvertiser01 = styled(Box)`
@@ -171,6 +188,7 @@ const TRowPrice01 = styled(Box)`
 const TRowPrice02 = styled(Box)`
   display: flex;
   align-items: center;
+  margin-top: 50px;
 `;
 
 const TRowPaymentLimit01 = styled(Box)`
@@ -187,6 +205,7 @@ const TRowPaymentLimit01 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #63688f;
+  margin-top: 5px;
 `;
 
 const TRowLimit01 = styled(Box)`
@@ -200,6 +219,7 @@ const TRowLimit01 = styled(Box)`
 const TRowLimit02 = styled(Box)`
   display: flex;
   align-items: center;
+  margin-top: 25px;
 `;
 
 const TRowPayment01 = styled(Box)`
@@ -224,6 +244,7 @@ const TRowPayment02 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #63688f;
+  margin-top: 5px;
   grid-gap: 5px;
 `;
 const TRowTrade = styled(Box)`
@@ -292,7 +313,7 @@ const TextPriceValue = styled(Box)`
   color: #d6ddee;
 `;
 
-const TextPriceType = styled(Box)`
+const TextPriceType01 = styled(Box)`
   font-family: "Livvic";
   font-style: normal;
   font-weight: 700;
@@ -301,6 +322,20 @@ const TextPriceType = styled(Box)`
   /* identical to box height, or 24px */
 
   letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const TextPriceType02 = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 148%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.01em;
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #63688f;
@@ -434,6 +469,11 @@ const ButtonTradeBuy = styled(Box)`
 
   color: #f2f5ff;
   cursor: pointer;
+`;
+
+const SectionInputPay = styled(Box)`
+  display: flex;
+  width: 100%;
 `;
 
 export default RowCollapse;
