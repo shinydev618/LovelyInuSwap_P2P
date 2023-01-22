@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Box } from "@mui/material";
+import iconDollar from "../../Assets/Image/Icon/Chain/us_dollar.png"
 
 const InputToken = ({ title, placeholder }) => {
   return (
