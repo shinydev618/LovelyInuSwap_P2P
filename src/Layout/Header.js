@@ -7,13 +7,21 @@ import iconBNB from "../Assets/Image/Icon/iconBNB.png";
 import { News } from "../Component/News/News";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
+  const navigate = useNavigate();
   const [flagSwitchTheme, setFlagSwitchTheme] = useState(false);
 
   return (
     <StyledComponent>
-      <SectionLogo>
+      <SectionLogo
+        onClick={() => {
+          navigate("/");
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        }}
+      >
         <IconLogo>
           <img src={iconLogo} width={"100%"} alt="" />
         </IconLogo>
@@ -79,7 +87,9 @@ const StyledComponent = styled(Box)`
   box-sizing: border-box;
   margin-top: 36px;
   z-index: 2;
+  transition: 0.5s;
 `;
+
 
 const SectionLogo = styled(Box)`
   display: flex;
@@ -113,6 +123,11 @@ const TextLogo = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   margin-left: 8px;
+
+  transition: 0.5s;
+  @media (max-width: 1240px) {
+    display: none;
+  }
 `;
 
 const SectionWallet = styled(Box)`
@@ -124,6 +139,11 @@ const SectionSetting = styled(Box)`
   display: flex;
   align-items: center;
   margin-left: 32px;
+
+  transition: 0.5s;
+  @media (max-width: 1240px) {
+    display: none;
+  }
 `;
 
 const ButtonMetamask = styled(Box)`
@@ -242,5 +262,6 @@ const CircleSwitch = styled(Box)`
     !flagswitchtheme ? "#323859" : "#ED628B"};
   border-radius: 100%;
 `;
+
 
 export default Header;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,8 +8,11 @@ import Sidebar from "./Layout/Sidebar";
 import BackMarquee from "./Component/BackMarquee/BgLayerComponent";
 import BuySell from "./Page/BuySell";
 import PostNormalAd from "./Page/PostNormalAd";
+import { HiMenuAlt2 } from "react-icons/hi";
+import MobileMenu from "./Component/MobileMenu/MobileMenu";
 
 const App = () => {
+  const [flagMobileMenu, setFlagMobileMenu] = useState(false);
   return (
     <BrowserRouter>
       <StyledComponent>
@@ -24,6 +28,14 @@ const App = () => {
           <BackMarquee />
         </SectionCenter>
         <Footer />
+        <IconMenu
+          onClick={() => {
+            setFlagMobileMenu(true);
+          }}
+        >
+          <HiMenuAlt2 />
+        </IconMenu>
+        <MobileMenu flagMobileMenu={flagMobileMenu} setFlagMobileMenu={setFlagMobileMenu} />
       </StyledComponent>
     </BrowserRouter>
   );
@@ -43,11 +55,29 @@ const SectionCenter = styled(Box)`
   width: 100%;
 `;
 
+const IconMenu = styled(Box)`
+  display: none;
+  position: fixed;
+  left: -5px;
+  top: 43px;
+  font-size: 2rem;
+  color: #d6ddee;
+  z-index: 100;
+  cursor: pointer;
+  @media (max-width: 1240px) {
+    display: flex;
+  }
+`;
+
 const SectionContent = styled(Box)`
   display: flex;
   flex: 1;
   width: 100%;
   z-index: 4;
+  transition: 0.5s;
+  @media (max-width: 1240px) {
+    justify-content: center;
+  }
 `;
 
 export default App;

@@ -1,0 +1,136 @@
+.mobileMenu-component {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    user-select: none;
+}
+
+.mobileMenu-bg {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: row;
+}
+body.showMenu{
+    overflow: hidden;
+}
+
+body.showMenu .mobileMenu-component {
+    left: 0px;
+    transition: left 0.2s ease-in;
+}
+
+body .mobileMenu-component{
+    left: -100%;
+    transition: left 0.2s ease-in;
+}
+
+.mobileMenu-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 44px 45px;
+}
+
+.mobileMenu-header > button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-right: 37px;
+    cursor: pointer;
+}
+
+.mobileMenu-header > section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Livvic", Inter, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 23.52px;
+    letter-spacing: 0.07em;
+    color: #D6DDEE;
+    cursor: default;
+}
+
+.mobileMenu-header > section > img {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+
+.mobileMenu-header > section > span {
+    color: #ED628B;
+}
+
+.mobileMenu-container {
+    margin-left: 19px;
+    z-index: 20000;
+}
+
+.mobileMenu-container > a {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.mobileMenu-container > a > span {
+    color: #5C6081;
+    font-family: "Livvic", Inter, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    padding: 15px;
+    border-radius: 16px;
+    margin-left: -1px;
+}
+
+.mobileMenu-container > a > div {
+    width: 56px;
+    height: 56px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px;
+}
+
+.mobileMenu-active {
+    cursor: default !important;
+}
+
+.mobileMenu-active > span {
+    background-color: #22263D;
+    color: #D1D5EF !important;
+}
+
+.mobileMenu-active > div {
+    background-color: #22263D;
+}
+
+@media screen and (max-width: 1240px) {
+    .mobileMenu-component {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .mobileMenu-bg {
+        width: auto;
+        height: auto;
+    }
+    .mobileMenu-bg > svg{
+        width: 100% !important;
+    }
+}

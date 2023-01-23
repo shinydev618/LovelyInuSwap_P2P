@@ -55,11 +55,17 @@ const StyledComponent = styled(Box)`
   margin-left: 50px;
   margin-top: 150px;
   z-index: 3;
+  transition: 0.5s;
+  @media (max-width: 1240px) {
+    display: none;
+  }
 `;
 
 const LinkEach = styled(Box)`
   display: flex;
-  align-items: cetner;
+  align-items: center;
+  width: fit-content;
+  user-select: none;
   color: #5c6081;
   margin: 20px 0px;
   opacity: 0.96;
