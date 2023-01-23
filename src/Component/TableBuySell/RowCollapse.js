@@ -2,11 +2,17 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Box } from "@mui/material";
 import InputToken from "../Input/InputToken";
+import iconDollar from "../../Assets/Image/Icon/Chain/us_dollar.png";
+import iconTether from "../../Assets/Image/Icon/Chain/tether.png";
 
 const RowCollapse = ({ each }) => {
   const [flagExpandBuy, setFlagExpandBuy] = useState(false);
   const handleBuy = () => {
     setFlagExpandBuy(true);
+  };
+
+  const handleCancelBuy = () => {
+    setFlagExpandBuy(false);
   };
 
   if (!flagExpandBuy) {
@@ -121,8 +127,24 @@ const RowCollapse = ({ each }) => {
             <InputToken
               title={"I want to pay"}
               placeholder={"2,000.0 - 50,000.0"}
+              icon={iconDollar}
+              payType={"USD"}
             />
           </SectionInputPay>
+          <SectionInputReceive>
+            <InputToken
+              title={"I will receive"}
+              placeholder={"0.0"}
+              icon={iconTether}
+              payType={"USDT"}
+            />
+          </SectionInputReceive>
+          <ButtonBuyGroup>
+            <ButtonCancelBuy onClick={() => handleCancelBuy()}>
+              Cancel
+            </ButtonCancelBuy>
+            <ButtonBuy>Buy USDT</ButtonBuy>
+          </ButtonBuyGroup>
         </SectionExpandRight>
       </TableExpandRow>
     );
@@ -157,6 +179,7 @@ const SectionExpandRight = styled(Box)`
   flex: 1;
   width: 100%;
   flex-direction: column;
+  justify-content: space-between;
   background: #22263d;
   backdrop-filter: blur(3px);
   /* Note: backdrop-filter has minimal browser support */
@@ -474,6 +497,72 @@ const ButtonTradeBuy = styled(Box)`
 const SectionInputPay = styled(Box)`
   display: flex;
   width: 100%;
+`;
+
+const SectionInputReceive = styled(Box)`
+  display: flex;
+  width: 100%;
+`;
+
+const ButtonBuyGroup = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ButtonCancelBuy = styled(Box)`
+  display: flex;
+  background: #323859;
+  height: 40px;
+  flex: 1;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.04em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+  box-shadow: 0px 0px 10px rgba(24, 27, 46, 0.72);
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.3);
+  }
+`;
+
+const ButtonBuy = styled(Box)`
+  display: flex;
+  background: #5f84f5;
+  height: 40px;
+  flex: 1;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.04em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #f2f5ff;
+  box-shadow: 0px 0px 10px rgba(24, 27, 46, 0.72);
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.3);
+  }
 `;
 
 export default RowCollapse;

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { Box } from "@mui/material";
-import iconDollar from "../../Assets/Image/Icon/Chain/us_dollar.png"
 
-const InputToken = ({ title, placeholder }) => {
+const InputToken = ({ title, placeholder, icon, payType }) => {
   return (
     <StyledComponent>
       <TextDialogPay>{title}</TextDialogPay>
@@ -11,6 +10,12 @@ const InputToken = ({ title, placeholder }) => {
           component={"input"}
           placeholder={placeholder}
         ></InputNumber>
+        <SectionIcon>
+          <TextPayType>{payType}</TextPayType>
+          <IconPay>
+            <img src={icon} width={"100%"} height={"100%"} alt="" />
+          </IconPay>
+        </SectionIcon>
       </SectionInput>
     </StyledComponent>
   );
@@ -53,6 +58,8 @@ const SectionInput = styled(Box)`
 
 const InputNumber = styled(Box)`
   display: flex;
+  flex: 1;
+  margin-right: 20px;
   outline: none;
   border: none;
   font-family: "Livvic";
@@ -66,7 +73,32 @@ const InputNumber = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #5c6081;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
+`;
+
+const SectionIcon = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+const TextPayType = styled(Box)`
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: rgba(99, 104, 143, 0.64);
+`;
+
+const IconPay = styled(Box)`
+  display: flex;
+  margin-left: 7px;
+  width: 32px;
+  height: 32px;
 `;
 
 export default InputToken;
