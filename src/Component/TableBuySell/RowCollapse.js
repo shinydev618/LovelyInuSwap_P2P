@@ -11,8 +11,10 @@ import {
   dataPaymentRecommended,
 } from "../../Data/PaymentMethod";
 import BadgePayment from "../Badge/BadgePayment";
+import { useNavigate } from "react-router-dom";
 
 const RowCollapse = ({ each, flagBuySell }) => {
+  const navigate = useNavigate();
   const [flagExpandBuy, setFlagExpandBuy] = useState(false);
   const handleOpenModalPayment = () => setFlagModalPayment(true);
   const handleCloseModalPayment = () => setFlagModalPayment(false);
@@ -173,7 +175,12 @@ const RowCollapse = ({ each, flagBuySell }) => {
             <ButtonCancelBuy onClick={() => handleCancelBuy()}>
               Cancel
             </ButtonCancelBuy>
-            <ButtonBuy flagbuysell={flagBuySell ? 1 : 0}>
+            <ButtonBuy
+              flagbuysell={flagBuySell ? 1 : 0}
+              onClick={() => {
+                navigate("/post");
+              }}
+            >
               {!flagBuySell ? "Buy USDT" : "Sell USDT"}
             </ButtonBuy>
           </ButtonBuyGroup>
