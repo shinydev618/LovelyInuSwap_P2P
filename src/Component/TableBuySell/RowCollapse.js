@@ -5,7 +5,7 @@ import InputToken from "../Input/InputToken";
 import iconDollar from "../../Assets/Image/Icon/Chain/us_dollar.png";
 import iconTether from "../../Assets/Image/Icon/Chain/tether.png";
 
-const RowCollapse = ({ each }) => {
+const RowCollapse = ({ each, flagBuySell }) => {
   const [flagExpandBuy, setFlagExpandBuy] = useState(false);
   const handleBuy = () => {
     setFlagExpandBuy(true);
@@ -77,7 +77,9 @@ const RowCollapse = ({ each }) => {
           )}
         </TRowPayment01>
         <TRowTrade onClick={() => handleBuy()}>
-          <ButtonTradeBuy>BUY</ButtonTradeBuy>
+          <ButtonTradeBuy flagbuysell={flagBuySell ? 1 : 0}>
+            {!flagBuySell ? "BUY" : "SELL"}
+          </ButtonTradeBuy>
         </TRowTrade>
       </TableRow>
     );
@@ -125,7 +127,7 @@ const RowCollapse = ({ each }) => {
         <SectionExpandRight>
           <SectionInputPay>
             <InputToken
-              title={"I want to pay"}
+              title={!flagBuySell ? "I want to pay" : "I want to sell"}
               placeholder={"2,000.0 - 50,000.0"}
               icon={iconDollar}
               payType={"USD"}
@@ -139,11 +141,21 @@ const RowCollapse = ({ each }) => {
               payType={"USDT"}
             />
           </SectionInputReceive>
+          {!flagBuySell ? (
+            <></>
+          ) : (
+            <SectionPaymentMethod>
+              <TextDialogPaymentMethod>Payment method</TextDialogPaymentMethod>
+              <ButtonPaymentMethod>Set My Payment Method</ButtonPaymentMethod>
+            </SectionPaymentMethod>
+          )}
           <ButtonBuyGroup>
             <ButtonCancelBuy onClick={() => handleCancelBuy()}>
               Cancel
             </ButtonCancelBuy>
-            <ButtonBuy>Buy USDT</ButtonBuy>
+            <ButtonBuy flagbuysell={flagBuySell ? 1 : 0}>
+              {!flagBuySell ? "Buy USDT" : "Sell USDT"}
+            </ButtonBuy>
           </ButtonBuyGroup>
         </SectionExpandRight>
       </TableExpandRow>
@@ -179,7 +191,6 @@ const SectionExpandRight = styled(Box)`
   flex: 1;
   width: 100%;
   flex-direction: column;
-  justify-content: space-between;
   background: #22263d;
   backdrop-filter: blur(3px);
   /* Note: backdrop-filter has minimal browser support */
@@ -478,7 +489,7 @@ const ButtonTradeBuy = styled(Box)`
   height: 40px;
   justify-content: center;
   align-items: center;
-  background: #5f84f5;
+  background: ${({ flagbuysell }) => (!flagbuysell ? "#5f84f5" : "#ED628B")};
   border-radius: 12px;
   font-family: "Livvic";
   font-style: normal;
@@ -502,12 +513,14 @@ const SectionInputPay = styled(Box)`
 const SectionInputReceive = styled(Box)`
   display: flex;
   width: 100%;
+  margin-top: 16px;
 `;
 
 const ButtonBuyGroup = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
 `;
 
 const ButtonCancelBuy = styled(Box)`
@@ -534,13 +547,13 @@ const ButtonCancelBuy = styled(Box)`
   margin-right: 10px;
   transition: 0.3s;
   &:hover {
-    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.3);
+    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.5);
   }
 `;
 
 const ButtonBuy = styled(Box)`
   display: flex;
-  background: #5f84f5;
+  background: ${({ flagbuysell }) => (!flagbuysell ? "#5f84f5" : "#ED628B")};
   height: 40px;
   flex: 1;
   border-radius: 12px;
@@ -561,7 +574,56 @@ const ButtonBuy = styled(Box)`
   cursor: pointer;
   transition: 0.3s;
   &:hover {
-    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.3);
+    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.5);
+  }
+`;
+
+const SectionPaymentMethod = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+`;
+
+const TextDialogPaymentMethod = styled(Box)`
+  display: flex;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 200%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.03em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #63688f;
+`;
+
+const ButtonPaymentMethod = styled(Box)`
+  display: flex;
+  width: 100%;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  background: #22263d;
+  border: 1px solid #323859;
+  border-radius: 12px;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 148%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.01em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #ed628b;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.5);
   }
 `;
 

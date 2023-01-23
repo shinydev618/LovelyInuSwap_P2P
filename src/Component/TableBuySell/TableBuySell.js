@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { dataTableBuySell } from "../../Data/TableBuySell";
 import RowCollapse from "./RowCollapse";
 
-const TableBuySell = () => {
+const TableBuySell = ({flagBuySell}) => {
   return (
     <TableBuy>
       <TableHead>
@@ -15,7 +15,7 @@ const TableBuySell = () => {
       </TableHead>
       <TableBody>
         {dataTableBuySell?.map((each, index) => {
-          return <RowCollapse key={index} each={each} />;
+          return <RowCollapse key={index} each={each} flagBuySell={flagBuySell} />;
         })}
       </TableBody>
     </TableBuy>

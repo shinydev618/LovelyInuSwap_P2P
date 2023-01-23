@@ -1,20 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { TbRefresh } from "react-icons/tb";
 import iconTether from "../Assets/Image/Icon/Chain/tether.png";
 import { dataChainList } from "../Data/ChainList";
 import TableBuySell from "../Component/TableBuySell/TableBuySell";
 
-const Buy = () => {
-  const navigate = useNavigate();
-  const handleRouterBuy = () => {
-    navigate("/buy");
-  };
-
-  const handleRouterSell = () => {
-    navigate("/sell");
-  };
+const BuySell = () => {
+  // const navigate = useNavigate();
+  const [flagBuySell, setFlagBuySell] = useState(false);
 
   return (
     <StyledComponent>
@@ -46,14 +41,26 @@ const Buy = () => {
       </SectionHeadDescription>
       <SectionTab>
         <GroupTabButton>
-          <ButtonTabBuy onClick={() => handleRouterBuy()}>
-            <SectinoTabBuyUp></SectinoTabBuyUp>
-            <BottomTabBuy></BottomTabBuy>
+          <ButtonTabBuy
+            onClick={() => {
+              setFlagBuySell(false);
+            }}
+          >
+            <SectinoTabBuyUp
+              flagbuysell={flagBuySell ? 1 : 0}
+            ></SectinoTabBuyUp>
+            <BottomTabBuy flagbuysell={flagBuySell ? 1 : 0}></BottomTabBuy>
             BUY
           </ButtonTabBuy>
-          <ButtonTabSell onClick={() => handleRouterSell()}>
-            <SectinoTabSellUp></SectinoTabSellUp>
-            <BottomTabSell></BottomTabSell>
+          <ButtonTabSell
+            onClick={() => {
+              setFlagBuySell(true);
+            }}
+          >
+            <SectinoTabSellUp
+              flagbuysell={flagBuySell ? 1 : 0}
+            ></SectinoTabSellUp>
+            <BottomTabSell flagbuysell={flagBuySell ? 1 : 0}></BottomTabSell>
             SELL
           </ButtonTabSell>
         </GroupTabButton>
@@ -72,7 +79,7 @@ const Buy = () => {
           })}
         </GroupIconChain>
       </SectionTab>
-      <TableBuySell />
+      <TableBuySell flagBuySell={flagBuySell} />
     </StyledComponent>
   );
 };
@@ -235,7 +242,7 @@ const ButtonTabBuy = styled(Box)`
 `;
 
 const SectinoTabBuyUp = styled(Box)`
-  display: flex;
+  display: ${({ flagbuysell }) => (!flagbuysell ? "flex" : "none")};
   position: absolute;
   top: 0px;
   width: 100%;
@@ -245,7 +252,7 @@ const SectinoTabBuyUp = styled(Box)`
 `;
 
 const BottomTabBuy = styled(Box)`
-  display: flex;
+  display: ${({ flagbuysell }) => (!flagbuysell ? "flex" : "none")};
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -277,7 +284,7 @@ const ButtonTabSell = styled(Box)`
 `;
 
 const SectinoTabSellUp = styled(Box)`
-  display: flex;
+  display: ${({ flagbuysell }) => (flagbuysell ? "flex" : "none")};
   position: absolute;
   top: 0px;
   width: 100%;
@@ -287,7 +294,7 @@ const SectinoTabSellUp = styled(Box)`
 `;
 
 const BottomTabSell = styled(Box)`
-  display: flex;
+  display: ${({ flagbuysell }) => (flagbuysell ? "flex" : "none")};
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -296,4 +303,4 @@ const BottomTabSell = styled(Box)`
   border-radius: 32px;
 `;
 
-export default Buy;
+export default BuySell;

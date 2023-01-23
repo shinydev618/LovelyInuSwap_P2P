@@ -79,6 +79,7 @@ const InputNumber = styled(Box)`
 const SectionIcon = styled(Box)`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 const TextPayType = styled(Box)`
   font-family: "Livvic";

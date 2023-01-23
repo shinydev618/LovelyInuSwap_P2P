@@ -6,8 +6,7 @@ import Footer from "./Layout/Footer";
 import Sidebar from "./Layout/Sidebar";
 // import BackMarquee from "./Component/BackMarquee/BackMarquee";
 import BackMarquee from "./Component/BackMarquee/BgLayerComponent";
-import Buy from "./Page/Buy";
-import Sell from "./Page/Sell";
+import BuySell from "./Page/BuySell";
 
 const App = () => {
   return (
@@ -18,9 +17,7 @@ const App = () => {
           <Sidebar />
           <SectionContent>
             <Routes>
-              <Route path="/" element={<Buy />} />
-              <Route path="/buy" element={<Buy />} />
-              <Route path="/sell" element={<Sell />} />
+              <Route path="/" element={<BuySell />} />
             </Routes>
           </SectionContent>
           <BackMarquee />
