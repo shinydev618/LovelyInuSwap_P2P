@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Box } from "@mui/material";
-import imageProgressUp from "../Assets/Image/Background/Lovely Swap P2P/ProgressPostUp.png";
-import imageProgressDown from "../Assets/Image/Background/Lovely Swap P2P/ProgressPostDown.png";
+import imageProgressUp from "../Assets/Image/Background/Lovely Swap P2P/ProgressPostUp01.png";
+import imageProgressDown from "../Assets/Image/Background/Lovely Swap P2P/ProgressPostDown01.png";
 import InputToken from "../Component/Input/InputToken";
 import iconDollar from "../Assets/Image/Icon/Chain/us_dollar.png";
 import iconTether from "../Assets/Image/Icon/Chain/tether.png";
@@ -30,6 +30,9 @@ const PostNormalAd = () => {
         <NumberStep01>1</NumberStep01>
         <NumberStep02>2</NumberStep02>
         <NumberStep03>3</NumberStep03>
+        <TextNumberStep01>Set Type & Price</TextNumberStep01>
+        <TextNumberStep02>Set Total Amount & Payment Method</TextNumberStep02>
+        <TextNumberStep03>Set Remarks & Automatic Response</TextNumberStep03>
       </SectionProgress>
       <SectionTab>
         <GroupTabButton>
@@ -146,7 +149,7 @@ const SectionTab = styled(Box)`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  margin-top: 48px;
+  margin-top: 80px;
 `;
 
 const GroupTabButton = styled(Box)`
@@ -332,6 +335,61 @@ const NumberStep03 = styled(Box)`
 
   letter-spacing: 0.1em;
   font-feature-settings: "pnum" on, "lnum" on;
+`;
+
+const TextNumberStep01 = styled(Box)`
+  display: flex;
+  position: absolute;
+  left: 0px;
+  bottom: -30px;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 168%;
+  /* or 20px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #5c6081;
+`;
+
+const TextNumberStep02 = styled(Box)`
+  display: flex;
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 168%;
+  /* or 20px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #5c6081;
+`;
+
+const TextNumberStep03 = styled(Box)`
+  display: flex;
+  position: absolute;
+  right: 0px;
+  bottom: -30px;
+  font-family: "Livvic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 168%;
+  /* or 20px */
+
+  letter-spacing: 0.05em;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #5c6081;
 `;
 
 const SectionChangeStep01 = styled(Box)`
