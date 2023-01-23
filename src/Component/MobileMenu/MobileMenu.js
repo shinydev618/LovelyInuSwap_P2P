@@ -237,6 +237,9 @@ const MobileMenuComponent = styled(Box)`
   transition: 0.5s;
   /* padding: 50px;
   box-sizing: border-box; */
+  transition-duration: 0.7s;
+  transition-property: left;
+  transition-timing-function: cubic-bezier(0.64, 0.005, 0.28, 0.995);
 `;
 
 const SectionLogo = styled(Box)`
@@ -273,6 +276,7 @@ const StyledComponent = styled(Box)`
   padding: 42px 40px;
   box-sizing: border-box;
   transition: 0.5s;
+  z-index: 10;
 `;
 
 const LinkEach = styled(Box)`
