@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Layout/Header";
 import Footer from "./Layout/Footer";
 import Sidebar from "./Layout/Sidebar";
-// import BackMarquee from "./Component/BackMarquee/BackMarquee";
 import BackMarquee from "./Component/BackMarquee/BgLayerComponent";
 import BuySell from "./Page/BuySell";
+import PostNormalAd from "./Page/PostNormalAd";
 
 const App = () => {
   return (
@@ -18,6 +18,7 @@ const App = () => {
           <SectionContent>
             <Routes>
               <Route path="/" element={<BuySell />} />
+              <Route path="/post" element={<PostNormalAd />} />
             </Routes>
           </SectionContent>
           <BackMarquee />
