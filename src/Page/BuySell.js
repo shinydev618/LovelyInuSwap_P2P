@@ -79,7 +79,7 @@ const BuySell = () => {
           })}
         </GroupIconChain>
       </SectionTab>
-      {/* <TableBuySell flagBuySell={flagBuySell} /> */}
+      <TableBuySell flagBuySell={flagBuySell} />
     </StyledComponent>
   );
 };

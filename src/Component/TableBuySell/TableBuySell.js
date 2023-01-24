@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { dataTableBuySell } from "../../Data/TableBuySell";
 import RowCollapse from "./RowCollapse";
 
-const TableBuySell = ({flagBuySell}) => {
+const TableBuySell = ({ flagBuySell }) => {
   return (
     <TableBuy>
       <TableHead>
@@ -15,7 +15,9 @@ const TableBuySell = ({flagBuySell}) => {
       </TableHead>
       <TableBody>
         {dataTableBuySell?.map((each, index) => {
-          return <RowCollapse key={index} each={each} flagBuySell={flagBuySell} />;
+          return (
+            <RowCollapse key={index} each={each} flagBuySell={flagBuySell} />
+          );
         })}
       </TableBody>
     </TableBuy>
@@ -46,6 +48,11 @@ const TableHead = styled(Box)`
   color: #5c6081;
 
   opacity: 0.48;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const THeadAdvertiser = styled(Box)`

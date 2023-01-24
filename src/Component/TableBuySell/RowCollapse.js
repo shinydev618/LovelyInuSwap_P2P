@@ -34,64 +34,70 @@ const RowCollapse = ({ each, flagBuySell }) => {
   if (!flagExpandBuy) {
     return (
       <TableRow>
-        <TRowAdvertiser01>
-          <SectionCellUp>
-            <IconAdvertiser>
-              <img src={each.advertiserIcon} width={"100%"} alt="" />
-            </IconAdvertiser>
-            <TextAdvertiserName>{each.advertiserName}</TextAdvertiserName>
-          </SectionCellUp>
-          <SectionCellDown>
-            <TextAdevertiserOrderCompletion>
-              {each.advertiserOrder}
-              <span style={{ color: "#63688f", fontSize: "11px" }}>
-                {"\u00a0"}orders{"\u00a0"}
-              </span>
-              {each.advertiserCompletion}
-              <span style={{ color: "#63688f", fontSize: "11px" }}>
-                {"\u00a0"}completion
-              </span>
-            </TextAdevertiserOrderCompletion>
-          </SectionCellDown>
-        </TRowAdvertiser01>
-        <TRowPrice01>
-          <SectionCellUp>
-            <TextPriceValue>{each.priceValue}</TextPriceValue>
-          </SectionCellUp>
-          <SectionCellDown>
-            <TextPriceType01>{each.priceType}</TextPriceType01>
-          </SectionCellDown>
-        </TRowPrice01>
-        <TRowLimit01>
-          <SectionCellUp>
-            <TextAvailable>
-              Available :
-              <span style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}>
-                {"\u00a0"}
-                {each.available}
-                {"\u00a0"}
-              </span>
-              <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
-            </TextAvailable>
-          </SectionCellUp>
-          <SectionCellDown>
-            <TextLimit>
-              Limit :{"\u00a0"}
-              <span style={{ color: "#D6DDEE" }}>
-                {each.limitFirst} - {each.limitLast}
-              </span>
-            </TextLimit>
-          </SectionCellDown>
-        </TRowLimit01>
-        <TRowPayment01>
-          {each.payment[0] !== "" ? <ButtonWise>Wise</ButtonWise> : <></>}
-          {each.payment[1] !== "" ? <ButtonPumb>PUMB</ButtonPumb> : <></>}
-          {each.payment[2] !== "" ? (
-            <ButtonGeoPay>Geo Pay</ButtonGeoPay>
-          ) : (
-            <></>
-          )}
-        </TRowPayment01>
+        <TRowMobile01>
+          <TRowAdvertiser01>
+            <SectionCellUp>
+              <IconAdvertiser>
+                <img src={each.advertiserIcon} width={"100%"} alt="" />
+              </IconAdvertiser>
+              <TextAdvertiserName>{each.advertiserName}</TextAdvertiserName>
+            </SectionCellUp>
+            <SectionCellDown>
+              <TextAdevertiserOrderCompletion>
+                {each.advertiserOrder}
+                <span style={{ color: "#63688f", fontSize: "11px" }}>
+                  {"\u00a0"}orders{"\u00a0"}
+                </span>
+                {each.advertiserCompletion}
+                <span style={{ color: "#63688f", fontSize: "11px" }}>
+                  {"\u00a0"}completion
+                </span>
+              </TextAdevertiserOrderCompletion>
+            </SectionCellDown>
+          </TRowAdvertiser01>
+          <TRowPrice01>
+            <SectionCellUp>
+              <TextPriceValue>{each.priceValue}</TextPriceValue>
+            </SectionCellUp>
+            <SectionCellDown>
+              <TextPriceType01>{each.priceType}</TextPriceType01>
+            </SectionCellDown>
+          </TRowPrice01>
+        </TRowMobile01>
+
+        <TRowMobile02>
+          <TRowLimit01>
+            <SectionCellUp>
+              <TextAvailable>
+                Available :
+                <span style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}>
+                  {"\u00a0"}
+                  {each.available}
+                  {"\u00a0"}
+                </span>
+                <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
+              </TextAvailable>
+            </SectionCellUp>
+            <SectionCellDown>
+              <TextLimit>
+                Limit :{"\u00a0"}
+                <span style={{ color: "#D6DDEE" }}>
+                  {each.limitFirst} - {each.limitLast}
+                </span>
+              </TextLimit>
+            </SectionCellDown>
+          </TRowLimit01>
+          <TRowPayment01>
+            {each.payment[0] !== "" ? <ButtonWise>Wise</ButtonWise> : <></>}
+            {each.payment[1] !== "" ? <ButtonPumb>PUMB</ButtonPumb> : <></>}
+            {each.payment[2] !== "" ? (
+              <ButtonGeoPay>Geo Pay</ButtonGeoPay>
+            ) : (
+              <></>
+            )}
+          </TRowPayment01>
+        </TRowMobile02>
+
         <TRowTrade onClick={() => handleBuy()}>
           <ButtonTradeBuy flagbuysell={flagBuySell ? 1 : 0}>
             {!flagBuySell ? "BUY" : "SELL"}
@@ -248,6 +254,31 @@ const TableRow = styled(Box)`
   align-items: center;
   padding: 25px 0px;
   border-bottom: 1px solid rgba(50, 56, 89, 0.8);
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const TRowMobile01 = styled(Box)`
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+`;
+
+const TRowMobile02 = styled(Box)`
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: flex;
+    margin-top: 24px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 `;
 
 const TableExpandRow = styled(Box)`
@@ -341,6 +372,10 @@ const TRowPayment01 = styled(Box)`
   flex-wrap: wrap;
   grid-gap: 5px;
   justify-content: flex-start;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    justify-content: flex-end;
+  }
 `;
 
 const TRowPayment02 = styled(Box)`
@@ -366,6 +401,13 @@ const TRowTrade = styled(Box)`
   align-items: flex-end;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    width: 100%;
+    margin-top: 24px;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const SectionCellUp = styled(Box)`
@@ -582,6 +624,11 @@ const ButtonTradeBuy = styled(Box)`
 
   color: #f2f5ff;
   cursor: pointer;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const SectionInputPay = styled(Box)`
