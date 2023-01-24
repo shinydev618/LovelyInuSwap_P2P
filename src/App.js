@@ -43,6 +43,7 @@ const App = () => {
 
 const StyledComponent = styled(Box)`
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -57,7 +58,7 @@ const SectionCenter = styled(Box)`
 
 const IconMenu = styled(Box)`
   display: none;
-  position: fixed;
+  position: absolute;
   left: -5px;
   top: 43px;
   font-size: 2rem;

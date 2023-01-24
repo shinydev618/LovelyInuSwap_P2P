@@ -64,6 +64,14 @@ const LinkIcon = styled(Box)`
   &:hover {
     color: white;
   }
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    margin: 0px 15px;
+  }
+  @media (max-width: 350px) {
+    margin: 0px 10px;
+  }
 `;
 
 export default Footer;

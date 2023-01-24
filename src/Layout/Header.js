@@ -9,70 +9,124 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-
 const Header = () => {
   const navigate = useNavigate();
   const [flagSwitchTheme, setFlagSwitchTheme] = useState(false);
 
   return (
     <StyledComponent>
-      <SectionLogo
-        onClick={() => {
-          navigate("/");
-          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        }}
-      >
-        <IconLogo>
-          <img src={iconLogo} width={"100%"} alt="" />
-        </IconLogo>
-        <TextLogo>
-          <span style={{ color: "rgba(214, 221, 238, 1)" }}>LOVELY</span>
-          <span style={{ color: "rgba(237, 98, 139, 1)" }}>SWAP</span>
-        </TextLogo>
-      </SectionLogo>
-      <SectionToken>
-        <News />
-      </SectionToken>
-      <SectionConnect>
-        <SectionWallet>
-          <ButtonMetamask>
-            <IconMetamask>
-              <img src={iconMetamask} width={"100%"} height={"100%"} alt="" />
-            </IconMetamask>
-            <TextWallet>0xF0 ... e252</TextWallet>
-            <IconDown>
-              <MdKeyboardArrowDown />
-            </IconDown>
-          </ButtonMetamask>
-          <ButtonNetwork>
-            <IconNetwork>
-              <img src={iconBNB} width={"100%"} height={"100%"} alt="" />
-            </IconNetwork>
-            <TextNetwork>BSC Mainnet</TextNetwork>
-            <IconDown>
-              <MdKeyboardArrowDown />
-            </IconDown>
-          </ButtonNetwork>
-        </SectionWallet>
-        <SectionSetting>
-          <IconDark flagswitchtheme={flagSwitchTheme ? 1 : 0}>
-            <BsFillMoonStarsFill />
-          </IconDark>
-          <ButtonSwitchTheme
-            onClick={() => {
-              setFlagSwitchTheme(!flagSwitchTheme);
-            }}
-            flagswitchtheme={flagSwitchTheme ? 1 : 0}
-          >
-            <CircleSwitch
+      <SectionDesktop>
+        <SectionLogo
+          onClick={() => {
+            navigate("/");
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
+          <IconLogo>
+            <img src={iconLogo} width={"100%"} alt="" />
+          </IconLogo>
+          <TextLogo>
+            <span style={{ color: "rgba(214, 221, 238, 1)" }}>LOVELY</span>
+            <span style={{ color: "rgba(237, 98, 139, 1)" }}>SWAP</span>
+          </TextLogo>
+        </SectionLogo>
+        <SectionToken>
+          <News />
+        </SectionToken>
+        <SectionConnect>
+          <SectionWallet>
+            <ButtonMetamask>
+              <IconMetamask>
+                <img src={iconMetamask} width={"100%"} height={"100%"} alt="" />
+              </IconMetamask>
+              <TextWallet>0xF0 ... e252</TextWallet>
+              <IconDown>
+                <MdKeyboardArrowDown />
+              </IconDown>
+            </ButtonMetamask>
+            <ButtonNetwork>
+              <IconNetwork>
+                <img src={iconBNB} width={"100%"} height={"100%"} alt="" />
+              </IconNetwork>
+              <TextNetwork>BSC Mainnet</TextNetwork>
+              <IconDown>
+                <MdKeyboardArrowDown />
+              </IconDown>
+            </ButtonNetwork>
+          </SectionWallet>
+          <SectionSetting>
+            <IconDark flagswitchtheme={flagSwitchTheme ? 1 : 0}>
+              <BsFillMoonStarsFill />
+            </IconDark>
+            <ButtonSwitchTheme
+              onClick={() => {
+                setFlagSwitchTheme(!flagSwitchTheme);
+              }}
               flagswitchtheme={flagSwitchTheme ? 1 : 0}
-            ></CircleSwitch>
-          </ButtonSwitchTheme>
-          <IconLight flagswitchtheme={flagSwitchTheme ? 1 : 0}>
-            <BsFillSunFill />
-          </IconLight>
-        </SectionSetting>
-      </SectionConnect>
+            >
+              <CircleSwitch
+                flagswitchtheme={flagSwitchTheme ? 1 : 0}
+              ></CircleSwitch>
+            </ButtonSwitchTheme>
+            <IconLight flagswitchtheme={flagSwitchTheme ? 1 : 0}>
+              <BsFillSunFill />
+            </IconLight>
+          </SectionSetting>
+        </SectionConnect>
+      </SectionDesktop>
+      <SectionMobile>
+        <SectionMobileUp>
+          <SectionLogo
+            onClick={() => {
+              navigate("/");
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
+            <IconLogo>
+              <img src={iconLogo} width={"100%"} alt="" />
+            </IconLogo>
+            <TextLogo>
+              <span style={{ color: "rgba(214, 221, 238, 1)" }}>LOVELY</span>
+              <span style={{ color: "rgba(237, 98, 139, 1)" }}>SWAP</span>
+            </TextLogo>
+          </SectionLogo>
+          <SectionConnect>
+            <SectionWallet>
+              <IconMetaMaskMobile>
+                <img src={iconMetamask} width={"100%"} height={"100%"} alt="" />
+              </IconMetaMaskMobile>
+              <ButtonMetamask>
+                <IconMetamask>
+                  <img
+                    src={iconMetamask}
+                    width={"100%"}
+                    height={"100%"}
+                    alt=""
+                  />
+                </IconMetamask>
+                <TextWallet>0xF0 ... e252</TextWallet>
+                <IconDown>
+                  <MdKeyboardArrowDown />
+                </IconDown>
+              </ButtonMetamask>
+              <ButtonNetwork>
+                <IconNetwork>
+                  <img src={iconBNB} width={"100%"} height={"100%"} alt="" />
+                </IconNetwork>
+                <TextNetwork>BSC Mainnet</TextNetwork>
+                <IconDown>
+                  <MdKeyboardArrowDown />
+                </IconDown>
+              </ButtonNetwork>
+            </SectionWallet>
+          </SectionConnect>
+        </SectionMobileUp>
+        <SectionMobileDown>
+          <SectionToken>
+            <News />
+          </SectionToken>
+        </SectionMobileDown>
+      </SectionMobile>
     </StyledComponent>
   );
 };
@@ -80,16 +134,63 @@ const Header = () => {
 const StyledComponent = styled(Box)`
   display: flex;
   width: 100%;
-  height: 46px;
-  justify-content: space-between;
-  align-items: center;
   padding: 0px 40px;
   box-sizing: border-box;
   margin-top: 36px;
   z-index: 2;
   transition: 0.5s;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    padding: 0px 24px 0px 40px;
+  }
 `;
 
+const SectionDesktop = styled(Box)`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const SectionMobile = styled(Box)`
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: flex;
+  }
+`;
+
+const IconMetaMaskMobile = styled(Box)`
+  display: none;
+  width: 24px;
+  height: 22px;
+  margin-right: 5px;
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    display: flex;
+  }
+`;
+
+const SectionMobileUp = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+const SectionMobileDown = styled(Box)`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 48px;
+`;
 
 const SectionLogo = styled(Box)`
   display: flex;
@@ -157,6 +258,11 @@ const ButtonMetamask = styled(Box)`
   padding: 0px 10px 0px 16px;
   box-sizing: border-box;
   cursor: pointer;
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const ButtonNetwork = styled(Box)`
@@ -262,6 +368,5 @@ const CircleSwitch = styled(Box)`
     !flagswitchtheme ? "#323859" : "#ED628B"};
   border-radius: 100%;
 `;
-
 
 export default Header;

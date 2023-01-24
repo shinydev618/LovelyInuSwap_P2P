@@ -15,8 +15,8 @@ const BuySell = () => {
     <StyledComponent>
       <SectionHead>
         <TextHeadTitle>
-          <Box display={"flex"}>Buy & Sell{"\u00a0"}</Box>
-          <Box display={"flex"} alignItems={"center"}>
+          <TextBuySellLeft>Buy & Sell{"\u00a0"}</TextBuySellLeft>
+          <TextBuySellRight>
             <IconTether>
               <img src={iconTether} width={"100%"} alt="iconTether" />
             </IconTether>
@@ -26,7 +26,7 @@ const BuySell = () => {
                 (USDT)
               </span>
             </Box>
-          </Box>
+          </TextBuySellRight>
         </TextHeadTitle>
         <ButtonRefresh>
           <IconRefresh>
@@ -79,7 +79,7 @@ const BuySell = () => {
           })}
         </GroupIconChain>
       </SectionTab>
-      <TableBuySell flagBuySell={flagBuySell} />
+      {/* <TableBuySell flagBuySell={flagBuySell} /> */}
     </StyledComponent>
   );
 };
@@ -97,6 +97,11 @@ const StyledComponent = styled(Box)`
   @media (max-width: 1400px) {
     width: 750px;
   }
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 0px 24px;
+    box-sizing: border-box;
+  }
 `;
 
 const SectionHead = styled(Box)`
@@ -104,6 +109,10 @@ const SectionHead = styled(Box)`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    align-items: flex-start;
+  }
 `;
 
 const SectionHeadDescription = styled(Box)`
@@ -138,6 +147,24 @@ const TextHeadTitle = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #d6ddee;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 370px) {
+    font-size: 25px;
+  }
+`;
+
+const TextBuySellLeft = styled(Box)`
+  display: flex;
+`;
+const TextBuySellRight = styled(Box)`
+  display: flex;
+  align-items: center;
 `;
 
 const IconTether = styled(Box)`
@@ -162,6 +189,13 @@ const ButtonRefresh = styled(Box)`
       transform: rotate(360deg);
     }
   }
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const IconRefresh = styled(Box)`
@@ -183,6 +217,11 @@ const TextRefresh = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #f2f5ff;
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const SectionTab = styled(Box)`
@@ -191,15 +230,34 @@ const SectionTab = styled(Box)`
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
 `;
 
 const GroupTabButton = styled(Box)`
   display: flex;
+
   align-items: center;
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-top: 40px;
+  }
 `;
 const GroupIconChain = styled(Box)`
   display: flex;
   align-items: center;
+  transition: 0.5s;
+  @media (max-width: 350px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
 `;
 
 const IconChain = styled(Box)`
@@ -215,6 +273,13 @@ const IconChain = styled(Box)`
   transition: 0.3s;
   &:hover {
     border: 2px solid #ed628b;
+  }
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    margin-left: 10px;
+  }
+  @media (max-width: 500px) {
+    margin: 0px 3px;
   }
 `;
 
@@ -239,6 +304,10 @@ const ButtonTabBuy = styled(Box)`
   color: #d1d5ef;
   margin-right: 20px;
   cursor: pointer;
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    flex: 1;
+  }
 `;
 
 const SectinoTabBuyUp = styled(Box)`
@@ -281,6 +350,11 @@ const ButtonTabSell = styled(Box)`
 
   color: #d1d5ef;
   cursor: pointer;
+
+  transition: 0.5s;
+  @media (max-width: 500px) {
+    flex: 1;
+  }
 `;
 
 const SectinoTabSellUp = styled(Box)`
