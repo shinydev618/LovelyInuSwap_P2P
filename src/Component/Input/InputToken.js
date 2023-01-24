@@ -59,6 +59,7 @@ const SectionInput = styled(Box)`
 const InputNumber = styled(Box)`
   display: flex;
   flex: 1;
+  width: 100%;
   margin-right: 20px;
   outline: none;
   border: none;
@@ -74,6 +75,11 @@ const InputNumber = styled(Box)`
 
   color: #5c6081;
   background-color: rgba(0, 0, 0, 0);
+
+  transition: 0.5s;
+  @media (max-width: 350px) { 
+    margin-right: 10px;
+  }
 `;
 
 const SectionIcon = styled(Box)`

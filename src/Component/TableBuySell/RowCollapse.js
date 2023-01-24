@@ -33,8 +33,8 @@ const RowCollapse = ({ each, flagBuySell }) => {
 
   if (!flagExpandBuy) {
     return (
-      <TableRow>
-        <TRowMobile01>
+      <>
+        <TableRow>
           <TRowAdvertiser01>
             <SectionCellUp>
               <IconAdvertiser>
@@ -63,9 +63,7 @@ const RowCollapse = ({ each, flagBuySell }) => {
               <TextPriceType01>{each.priceType}</TextPriceType01>
             </SectionCellDown>
           </TRowPrice01>
-        </TRowMobile01>
 
-        <TRowMobile02>
           <TRowLimit01>
             <SectionCellUp>
               <TextAvailable>
@@ -96,14 +94,86 @@ const RowCollapse = ({ each, flagBuySell }) => {
               <></>
             )}
           </TRowPayment01>
-        </TRowMobile02>
 
-        <TRowTrade onClick={() => handleBuy()}>
-          <ButtonTradeBuy flagbuysell={flagBuySell ? 1 : 0}>
-            {!flagBuySell ? "BUY" : "SELL"}
-          </ButtonTradeBuy>
-        </TRowTrade>
-      </TableRow>
+          <TRowTrade onClick={() => handleBuy()}>
+            <ButtonTradeBuy flagbuysell={flagBuySell ? 1 : 0}>
+              {!flagBuySell ? "BUY" : "SELL"}
+            </ButtonTradeBuy>
+          </TRowTrade>
+        </TableRow>
+        <MobileTableRow>
+          <TRowMobile01>
+            <TRowAdvertiser01>
+              <SectionCellUp>
+                <IconAdvertiser>
+                  <img src={each.advertiserIcon} width={"100%"} alt="" />
+                </IconAdvertiser>
+                <TextAdvertiserName>{each.advertiserName}</TextAdvertiserName>
+              </SectionCellUp>
+              <SectionCellDown>
+                <TextAdevertiserOrderCompletion>
+                  {each.advertiserOrder}
+                  <span style={{ color: "#63688f", fontSize: "11px" }}>
+                    {"\u00a0"}orders{"\u00a0"}
+                  </span>
+                  {each.advertiserCompletion}
+                  <span style={{ color: "#63688f", fontSize: "11px" }}>
+                    {"\u00a0"}completion
+                  </span>
+                </TextAdevertiserOrderCompletion>
+              </SectionCellDown>
+            </TRowAdvertiser01>
+            <TRowPrice01>
+              <SectionCellUp>
+                <TextPriceValue>{each.priceValue}</TextPriceValue>
+              </SectionCellUp>
+              <SectionCellDown>
+                <TextPriceType01>{each.priceType}</TextPriceType01>
+              </SectionCellDown>
+            </TRowPrice01>
+          </TRowMobile01>
+
+          <TRowMobile02>
+            <TRowLimit01>
+              <SectionCellUp>
+                <TextAvailable>
+                  Available :
+                  <span style={{ color: "#D6DDEE", letterSpacing: "0.05rem" }}>
+                    {"\u00a0"}
+                    {each.available}
+                    {"\u00a0"}
+                  </span>
+                  <span style={{ letterSpacing: "0.05rem" }}>USDT</span>
+                </TextAvailable>
+              </SectionCellUp>
+              <SectionCellDown>
+                <TextLimit>
+                  Limit :{"\u00a0"}
+                  <span style={{ color: "#D6DDEE" }}>
+                    {each.limitFirst} - {each.limitLast}
+                  </span>
+                </TextLimit>
+              </SectionCellDown>
+            </TRowLimit01>
+            <TRowPayment01>
+              {each.payment[0] !== "" ? <ButtonWise>Wise</ButtonWise> : <></>}
+              {each.payment[1] !== "" ? <ButtonPumb>PUMB</ButtonPumb> : <></>}
+              {each.payment[2] !== "" ? (
+                <ButtonGeoPay>Geo Pay</ButtonGeoPay>
+              ) : (
+                <></>
+              )}
+            </TRowPayment01>
+          </TRowMobile02>
+          <TRowMobile03>
+            <TRowTrade onClick={() => handleBuy()}>
+              <ButtonTradeBuy flagbuysell={flagBuySell ? 1 : 0}>
+                {!flagBuySell ? "BUY" : "SELL"}
+              </ButtonTradeBuy>
+            </TRowTrade>
+          </TRowMobile03>
+        </MobileTableRow>
+      </>
     );
   } else {
     return (
@@ -113,7 +183,19 @@ const RowCollapse = ({ each, flagBuySell }) => {
             <IconAdvertiser>
               <img src={each.advertiserIcon} width={"100%"} alt="" />
             </IconAdvertiser>
-            <TextAdvertiserName>{each.advertiserName}</TextAdvertiserName>
+            <TextAdvertiserName mr={"16px"}>
+              {each.advertiserName}
+            </TextAdvertiserName>
+            <TextAdevertiserOrderCompletion>
+              {each.advertiserOrder}
+              <span style={{ color: "#63688f", fontSize: "11px" }}>
+                {"\u00a0"}orders{"\u00a0"}
+              </span>
+              {each.advertiserCompletion}
+              <span style={{ color: "#63688f", fontSize: "11px" }}>
+                {"\u00a0"}completion
+              </span>
+            </TextAdevertiserOrderCompletion>
           </TRowAdvertiser02>
           <TRowPrice02>
             <TextPriceValue>{each.priceValue}</TextPriceValue>
@@ -256,11 +338,24 @@ const TableRow = styled(Box)`
   border-bottom: 1px solid rgba(50, 56, 89, 0.8);
   transition: 0.5s;
   @media (max-width: 900px) {
-    flex-direction: column;
+    display: none;
+  }
+`;
+
+const MobileTableRow = styled(Box)`
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  padding: 25px 0px;
+  border-bottom: 1px solid rgba(50, 56, 89, 0.8);
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: flex;
   }
 `;
 
 const TRowMobile01 = styled(Box)`
+  display: none;
   transition: 0.5s;
   @media (max-width: 900px) {
     display: flex;
@@ -271,6 +366,19 @@ const TRowMobile01 = styled(Box)`
 `;
 
 const TRowMobile02 = styled(Box)`
+  display: none;
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: flex;
+    margin-top: 24px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+`;
+
+const TRowMobile03 = styled(Box)`
+  display: none;
   transition: 0.5s;
   @media (max-width: 900px) {
     display: flex;
@@ -286,6 +394,11 @@ const TableExpandRow = styled(Box)`
   width: 100%;
   padding: 25px 0px;
   border-bottom: 1px solid rgba(50, 56, 89, 0.8);
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const SectionExpandLeft = styled(Box)`
@@ -307,6 +420,11 @@ const SectionExpandRight = styled(Box)`
   border-radius: 24px;
   padding: 25px;
   box-sizing: border-box;
+
+  transition: 0.5s;
+  @media (max-width: 900px) { 
+    margin-top: 24px;
+  }
 `;
 
 const TRowAdvertiser01 = styled(Box)`
@@ -324,6 +442,7 @@ const TRowAdvertiser02 = styled(Box)`
 
 const TRowPrice01 = styled(Box)`
   display: flex;
+  flex: 1;
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
