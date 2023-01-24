@@ -191,7 +191,7 @@ const ButtonRefresh = styled(Box)`
   }
 
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     width: 40px;
     justify-content: center;
     align-items: center;
@@ -219,7 +219,7 @@ const TextRefresh = styled(Box)`
   color: #f2f5ff;
 
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;
@@ -232,7 +232,7 @@ const SectionTab = styled(Box)`
   margin-top: 40px;
 
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     flex-direction: column-reverse;
     justify-content: center;
   }
@@ -243,7 +243,7 @@ const GroupTabButton = styled(Box)`
 
   align-items: center;
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     width: 100%;
     margin-top: 40px;
   }
@@ -278,7 +278,7 @@ const IconChain = styled(Box)`
   @media (max-width: 900px) {
     margin-left: 10px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     margin: 0px 3px;
   }
 `;
@@ -305,7 +305,7 @@ const ButtonTabBuy = styled(Box)`
   margin-right: 20px;
   cursor: pointer;
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     flex: 1;
   }
 `;
@@ -352,7 +352,7 @@ const ButtonTabSell = styled(Box)`
   cursor: pointer;
 
   transition: 0.5s;
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     flex: 1;
   }
 `;

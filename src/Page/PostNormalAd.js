@@ -9,6 +9,7 @@ import InputToken from "../Component/Input/InputToken";
 import iconDollar from "../Assets/Image/Icon/Chain/us_dollar.png";
 import iconTether from "../Assets/Image/Icon/Chain/tether.png";
 import {
+  FaArrowDown,
   FaArrowRight,
   FaMinus,
   FaPlus,
@@ -63,9 +64,15 @@ const PostNormalAd = () => {
         <NumberStep01>1</NumberStep01>
         <NumberStep02 flagstep={flagNextStep}>2</NumberStep02>
         <NumberStep03>3</NumberStep03>
-        <TextNumberStep01>Set Type & Price</TextNumberStep01>
-        <TextNumberStep02>Set Total Amount & Payment Method</TextNumberStep02>
-        <TextNumberStep03>Set Remarks & Automatic Response</TextNumberStep03>
+        <TextNumberStep01 flagstep={flagNextStep}>
+          Set Type & Price
+        </TextNumberStep01>
+        <TextNumberStep02 flagstep={flagNextStep}>
+          Set Total Amount & Payment Method
+        </TextNumberStep02>
+        <TextNumberStep03 flagstep={flagNextStep}>
+          Set Remarks & Automatic Response
+        </TextNumberStep03>
       </SectionProgress>
       {flagNextStep === 0 ? (
         <SectionTab>
@@ -105,6 +112,9 @@ const PostNormalAd = () => {
             <IconArrowRight>
               <FaArrowRight />
             </IconArrowRight>
+            <MobileIconArrowDown>
+              <FaArrowDown />
+            </MobileIconArrowDown>
             <InputToken title={"With Fiat"} icon={iconDollar} payType={"USD"} />
           </SectionChangeStep01>
           <SectionSetPriceStep01>
@@ -132,12 +142,15 @@ const PostNormalAd = () => {
             </InputPlusMinus>
             <SectionNextStep01>
               <SectionTextStates01>
-                <TextYourPrice01>Your Price :</TextYourPrice01>
-                {"\u00a0"}
-                <TextYourPrice02>{fixedPrice}</TextYourPrice02>
-                <TextHighestPrice01>Highest Order Price :</TextHighestPrice01>
-                {"\u00a0"}
-                <TextHighestPrice02>40</TextHighestPrice02>
+                <TextYourPrice01>
+                  Your Price :{"\u00a0"}
+                  <TextYourPrice02>{fixedPrice}</TextYourPrice02>
+                </TextYourPrice01>
+
+                <TextHighestPrice01>
+                  Highest Order Price :{"\u00a0"}
+                  <TextHighestPrice02>40</TextHighestPrice02>
+                </TextHighestPrice01>
               </SectionTextStates01>
               <ButtonNextStep01
                 onClick={() => {
@@ -168,6 +181,7 @@ const PostNormalAd = () => {
               <IconArrowRight>
                 <MdOutlineMultipleStop />
               </IconArrowRight>
+
               <InputToken
                 title={"With Fiat"}
                 placeholder={"50,000"}
@@ -298,6 +312,11 @@ const StyledComponent = styled(Box)`
   @media (max-width: 1400px) {
     width: 750px;
   }
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 0px 24px;
+    box-sizing: border-box;
+  }
 `;
 
 const SectionHead = styled(Box)`
@@ -329,11 +348,22 @@ const SectionTab = styled(Box)`
   align-items: center;
   justify-content: space-between;
   margin-top: 80px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    margin-top: 40px;
+  }
 `;
 
 const GroupTabButton = styled(Box)`
   display: flex;
   align-items: center;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 40px;
+  }
 `;
 
 const ButtonTabBuy = styled(Box)`
@@ -357,6 +387,11 @@ const ButtonTabBuy = styled(Box)`
   color: #d1d5ef;
   margin-right: 20px;
   cursor: pointer;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex: 1;
+  }
 `;
 
 const SectinoTabBuyUp = styled(Box)`
@@ -399,6 +434,11 @@ const ButtonTabSell = styled(Box)`
 
   color: #d1d5ef;
   cursor: pointer;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex: 1;
+  }
 `;
 
 const SectinoTabSellUp = styled(Box)`
@@ -534,6 +574,11 @@ const TextNumberStep01 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #5c6081;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: ${({ flagstep }) => (flagstep === 0 ? "flex" : "none")};
+  }
 `;
 
 const TextNumberStep02 = styled(Box)`
@@ -553,6 +598,11 @@ const TextNumberStep02 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #5c6081;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: ${({ flagstep }) => (flagstep === 1 ? "flex" : "none")};
+  }
 `;
 
 const TextNumberStep03 = styled(Box)`
@@ -571,6 +621,11 @@ const TextNumberStep03 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
 
   color: #5c6081;
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    display: ${({ flagstep }) => (flagstep === 2 ? "flex" : "none")};
+  }
 `;
 
 const SectionChangeStep01 = styled(Box)`
@@ -583,6 +638,11 @@ const SectionChangeStep01 = styled(Box)`
   padding: 24px;
   box-sizing: border-box;
   align-items: center;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const IconArrowRight = styled(Box)`
@@ -590,6 +650,23 @@ const IconArrowRight = styled(Box)`
   margin: 0px 20px;
   color: rgba(98, 104, 143, 1);
   font-size: 1.5rem;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const MobileIconArrowDown = styled(Box)`
+  display: none;
+  margin: 0px 20px;
+  color: rgba(98, 104, 143, 1);
+  font-size: 1.5rem;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    display: flex;
+    margin: 10px 0px;
+  }
 `;
 
 const SectionSetPriceStep01 = styled(Box)`
@@ -672,14 +749,29 @@ const SectionNextStep01 = styled(Box)`
   align-items: center;
   justify-content: space-between;
   margin-top: 32px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    margin-top: 24px;
+    align-items: flex-start;
+  }
 `;
 
 const SectionTextStates01 = styled(Box)`
   display: flex;
   align-items: center;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const TextYourPrice01 = styled(Box)`
+  display: flex;
+  align-items: center;
   font-family: "Livvic";
   font-style: normal;
   font-weight: 600;
@@ -707,6 +799,8 @@ const TextYourPrice02 = styled(Box)`
 `;
 
 const TextHighestPrice01 = styled(Box)`
+  display: flex;
+  align-items: center;
   font-family: "Livvic";
   font-style: normal;
   font-weight: 600;
@@ -718,6 +812,11 @@ const TextHighestPrice01 = styled(Box)`
   font-feature-settings: "pnum" on, "lnum" on;
   color: rgba(92, 96, 129, 0.8);
   margin-left: 40px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    margin-left: 0px;
+  }
 `;
 
 const TextHighestPrice02 = styled(Box)`
@@ -761,6 +860,12 @@ const ButtonNextStep01 = styled(Box)`
   }
   &:active {
     font-size: 12px;
+  }
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 24px;
   }
 `;
 
