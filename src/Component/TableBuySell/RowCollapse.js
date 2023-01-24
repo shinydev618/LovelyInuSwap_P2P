@@ -422,7 +422,7 @@ const SectionExpandRight = styled(Box)`
   box-sizing: border-box;
 
   transition: 0.5s;
-  @media (max-width: 900px) { 
+  @media (max-width: 900px) {
     margin-top: 24px;
   }
 `;
@@ -895,6 +895,17 @@ const SectionModal = styled(Box)`
       opacity: 100%;
     }
   }
+
+  transition: 0.5s;
+  @media (max-width: 900px) {
+    width: 500px;
+  }
+  @media (max-width: 600px) {
+    width: 330px;
+  }
+  @media (max-width: 350px) {
+    width: 300px;
+  }
 `;
 
 const SectionModalUp = styled(Box)`
@@ -903,6 +914,10 @@ const SectionModalUp = styled(Box)`
   height: 330px;
   padding: 40px 5px 24px 40px;
   box-sizing: border-box;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    padding: 40px 5px 24px 24px;
+  }
 `;
 
 const SectionInsideModalUp = styled(Box)`
@@ -936,6 +951,10 @@ const SectionModalDown = styled(Box)`
   padding: 24px 5px 40px 40px;
   box-sizing: border-box;
   border-radius: 0px 0px 24px 24px;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    padding: 40px 5px 24px 24px;
+  }
 `;
 
 const SectionInsideModalDown = styled(Box)`
@@ -1003,6 +1022,14 @@ const ButtonCloseModal = styled(Box)`
   &:hover {
     transform: rotate(180deg);
   }
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    right: 24px;
+  }
+  @media (max-width: 350px) {
+    right: 15px;
+  }
 `;
 
 const SectionPaymentsRecommended = styled(Box)`
@@ -1010,6 +1037,12 @@ const SectionPaymentsRecommended = styled(Box)`
   grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
   margin-top: 20px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 const SectionPaymentsAll = styled(Box)`
@@ -1017,6 +1050,12 @@ const SectionPaymentsAll = styled(Box)`
   grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
   margin-top: 20px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 const GroupInputSearchPayment = styled(Box)`
