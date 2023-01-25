@@ -15,26 +15,18 @@ import {
   FaPlus,
   FaRegQuestionCircle,
 } from "react-icons/fa";
-import { Modal } from "@mui/material";
-import {
-  MdClose,
-  MdSearch,
-  MdKeyboardArrowDown,
-  MdOutlineMultipleStop,
-} from "react-icons/md";
-import { dataPaymentAll, dataPaymentRecommended } from "../Data/PaymentMethod";
-import BadgePayment from "../Component/Badge/BadgePayment";
-
+import { MdKeyboardArrowDown, MdOutlineMultipleStop } from "react-icons/md";
+import ModalPaymentMethod from "../Component/Modal/ModalPaymentMethod";
+import { RefContext } from "../Context/ContextUseState";
+import { useContext } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const PostNormalAd = () => {
   // const navigate = useNavigate();
+  const { handleOpenModalPayment } = useContext(RefContext);
   const [flagBuySell, setFlagBuySell] = useState(false);
   const [fixedPrice, setFixedPrice] = useState(33);
   const [flagNextStep, setFlagNextStep] = useState(0);
-  const handleOpenModalPayment = () => setFlagModalPayment(true);
-  const handleCloseModalPayment = () => setFlagModalPayment(false);
-  const [flagModalPayment, setFlagModalPayment] = useState(false);
   const handleSetPaymentMethod = () => {
     handleOpenModalPayment();
   };
@@ -181,6 +173,9 @@ const PostNormalAd = () => {
               <IconArrowRight>
                 <MdOutlineMultipleStop />
               </IconArrowRight>
+              <MobileIconArrowDown>
+                <MdOutlineMultipleStop />
+              </MobileIconArrowDown>
 
               <InputToken
                 title={"With Fiat"}
@@ -243,58 +238,7 @@ const PostNormalAd = () => {
       ) : (
         <></>
       )}
-      <Modal
-        open={flagModalPayment}
-        // onClose={handleCloseModalPayment}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        BackdropComponent={custombackdrop}
-      >
-        <SectionModal>
-          <SectionModalUp>
-            <SectionInsideModalUp>
-              <TextTitleModal>Select Payment Method</TextTitleModal>
-              <TextDescriptionModal>Recommended</TextDescriptionModal>
-              <SectionPaymentsRecommended>
-                {dataPaymentRecommended.map((each, index) => {
-                  return <BadgePayment each={each} key={index} />;
-                })}
-              </SectionPaymentsRecommended>
-            </SectionInsideModalUp>
-          </SectionModalUp>
-          <SectionModalDown>
-            <SectionInsideModalDown>
-              <TextTitleModal>All Payment Methods</TextTitleModal>
-              <GroupInputSearchPayment>
-                <BoxSearch>
-                  <MdSearch />
-                </BoxSearch>
-                <InputSearchPayment
-                  component={"input"}
-                  placeholder={"Enter a payment method"}
-                ></InputSearchPayment>
-              </GroupInputSearchPayment>
-              <SectionPaymentsAll>
-                {dataPaymentAll.map((each, index) => {
-                  return <BadgePayment each={each} key={index} />;
-                })}
-              </SectionPaymentsAll>
-              <SectionPaymentsAll>
-                {dataPaymentAll.map((each, index) => {
-                  return <BadgePayment each={each} key={index} />;
-                })}
-              </SectionPaymentsAll>
-            </SectionInsideModalDown>
-          </SectionModalDown>
-          <ButtonCloseModal
-            onClick={() => {
-              handleCloseModalPayment();
-            }}
-          >
-            <MdClose />
-          </ButtonCloseModal>
-        </SectionModal>
-      </Modal>
+      <ModalPaymentMethod />
     </StyledComponent>
   );
 };
@@ -900,6 +844,11 @@ const SectionOrderLimit = styled(Box)`
   width: 100%;
   align-items: center;
   margin-top: 24px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const SectionPaymentMethodStep02 = styled(Box)`
@@ -919,18 +868,34 @@ const PaymentUpStep02 = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const PaymentMethod = styled(Box)`
   display: flex;
   flex-direction: column;
   margin-right: 16px;
   flex: 1;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 const PaymentTimeLimit = styled(Box)`
   display: flex;
   flex-direction: column;
   margin-right: 16px;
   flex: 1;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 16px;
+  }
 `;
 
 const TextDialogPaymentMethod = styled(Box)`
@@ -976,192 +941,6 @@ const ButtonPaymentMethod = styled(Box)`
   }
 `;
 
-const SectionModal = styled(Box)`
-  display: flex;
-  position: fixed;
-  flex-direction: column;
-  width: 600px;
-  background: #22263d;
-  border-radius: 24px;
-  outline: none;
-  border: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  animation: animationModal 0.5s 1;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-  @keyframes animationModal {
-    0% {
-      opacity: 0%;
-    }
-    100% {
-      opacity: 100%;
-    }
-  }
-`;
-
-const SectionModalUp = styled(Box)`
-  display: flex;
-  width: 100%;
-  height: 330px;
-  padding: 40px 5px 24px 40px;
-  box-sizing: border-box;
-`;
-
-const SectionInsideModalUp = styled(Box)`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: none;
-    cursor: pointer;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #323859;
-    border-radius: 15px;
-  }
-`;
-
-const SectionModalDown = styled(Box)`
-  display: flex;
-  width: 100%;
-  height: 330px;
-  background: rgba(50, 56, 89, 0.32);
-  padding: 24px 5px 40px 40px;
-  box-sizing: border-box;
-  border-radius: 0px 0px 24px 24px;
-`;
-
-const SectionInsideModalDown = styled(Box)`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  overflow-y: auto;
-  padding-right: 35px;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: none;
-    cursor: pointer;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #323859;
-    border-radius: 15px;
-  }
-`;
-
-const TextTitleModal = styled(Box)`
-  font-family: "Livvic";
-  font-style: normal;
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 132%;
-  /* identical to box height, or 24px */
-
-  letter-spacing: 0.04em;
-  font-feature-settings: "pnum" on, "lnum" on;
-
-  color: #d6ddee;
-`;
-
-const TextDescriptionModal = styled(Box)`
-  font-family: "Livvic";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 148%;
-  /* identical to box height, or 24px */
-
-  letter-spacing: 0.01em;
-  font-feature-settings: "pnum" on, "lnum" on;
-
-  color: rgba(92, 96, 129, 0.8);
-  margin-top: 8px;
-`;
-
-const ButtonCloseModal = styled(Box)`
-  display: flex;
-  position: absolute;
-  right: 40px;
-  top: 40px;
-  font-size: 1.5rem;
-  color: rgba(92, 96, 129, 1);
-  cursor: pointer;
-  transition: all 0.3s;
-  &:hover {
-    transform: rotate(180deg);
-  }
-`;
-
-const SectionPaymentsRecommended = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
-  margin-top: 20px;
-`;
-
-const SectionPaymentsAll = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
-  margin-top: 20px;
-`;
-
-const GroupInputSearchPayment = styled(Box)`
-  display: flex;
-  width: 100%;
-  min-height: 48px;
-  background: #22263d;
-  border-radius: 16px;
-  align-items: center;
-  margin-top: 24px;
-  padding-left: 24px;
-  padding-right: 35px;
-  box-sizing: border-box;
-`;
-
-const BoxSearch = styled(Box)`
-  display: flex;
-  font-size: 1.5rem;
-  color: rgba(92, 96, 129, 1);
-  margin-right: 10px;
-`;
-
-const InputSearchPayment = styled(Box)`
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  font-family: "Livvic";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 148%;
-  /* identical to box height, or 24px */
-
-  letter-spacing: -0.01em;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: rgba(92, 96, 129, 0.56);
-  background: rgba(0, 0, 0, 0);
-`;
-
 const ButtonTimeDropdown = styled(Box)`
   display: flex;
   width: 100%;
@@ -1205,6 +984,13 @@ const PaymentDownStep02 = styled(Box)`
   margin-top: 32px;
   align-items: center;
   justify-content: space-between;
+
+  flex: 1;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const SectionLeftPaymentDown = styled(Box)`
@@ -1248,6 +1034,11 @@ const TextPaymentType = styled(Box)`
 const SectionRightPaymentDown = styled(Box)`
   display: flex;
   align-items: center;
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 40px;
+  }
 `;
 
 const ButtonPrevious = styled(Box)`
@@ -1276,6 +1067,12 @@ const ButtonPrevious = styled(Box)`
     box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.5);
   }
   margin-right: 8px;
+
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
 const ButtonNextStep02 = styled(Box)`
@@ -1303,14 +1100,11 @@ const ButtonNextStep02 = styled(Box)`
   &:hover {
     box-shadow: 0px 0px 10px rgba(242, 245, 255, 0.5);
   }
-`;
-
-export const custombackdrop = styled(Box)`
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  background: rgba(24, 27, 46, 0.64);
-  backdrop-filter: blur(20px);
+  transition: 0.5s;
+  @media (max-width: 600px) {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
 export default PostNormalAd;

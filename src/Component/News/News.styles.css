@@ -115,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 388px) {
+@media screen and (max-width: 400px) {
   .news-elements-container {
     width: 240px;
   }
